@@ -1,10 +1,7 @@
 package translationworkflow.model;
 
 public class TranslationActivityOutput {
-    private String translation;
-
-    public TranslationActivityOutput() {
-    }
+    private final String translation;
 
     public TranslationActivityOutput(String translation) {
         this.translation = translation;
@@ -12,9 +9,5 @@ public class TranslationActivityOutput {
 
     public String getTranslation() {
         return translation;
-    }
-
-    public void setTranslation(String translation) {
-        this.translation = translation;
     }
 }

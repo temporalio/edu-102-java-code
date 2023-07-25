@@ -1,11 +1,8 @@
 package translationworkflow.model;
 
 public class TranslationWorkflowOutput {
-    private String helloMessage;
-    private String goodbyeMessage;
-
-    public TranslationWorkflowOutput() {
-    }
+    private final String helloMessage;
+    private final String goodbyeMessage;
 
     public TranslationWorkflowOutput(String helloMessage, String goodbyeMessage) {
         this.helloMessage = helloMessage;
@@ -16,16 +13,8 @@ public class TranslationWorkflowOutput {
         return helloMessage;
     }
 
-    public void setHelloMessage(String helloMessage) {
-        this.helloMessage = helloMessage;
-    }
-
     public String getGoodbyeMessage() {
         return goodbyeMessage;
-    }
-
-    public void setGoodbyeMessage(String goodbyeMessage) {
-        this.goodbyeMessage = goodbyeMessage;
     }
 
     public String toString() {
