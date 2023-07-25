@@ -12,9 +12,14 @@ import translationworkflow.model.TranslationActivityOutput;
 public class TranslationActivitiesImpl implements TranslationActivities {
 
     @Override
-    public TranslationActivityOutput translateTerm(TranslationActivityInput input) {
-        String term = input.getTerm();
-        String lang = input.getLanguageCode();
+    // TODO Replace the two input parameters with the class you defined as input
+    // TODO Replace the return value (String) with the name of the class you defined
+    // as output
+    public String translateTerm(String inputTerm, String languageCode) {
+        // TODO Change the parameters used in these two calls to
+        // use the getters from the class you defined to retrieve the input
+        String term = inputTerm;
+        String lang = languageCode;
 
         StringBuilder builder = new StringBuilder();
 
@@ -36,7 +41,8 @@ public class TranslationActivitiesImpl implements TranslationActivities {
             throw Activity.wrap(e);
         }
 
-        TranslationActivityOutput translation = new TranslationActivityOutput(builder.toString());
+        // TODO Replace
+        String translation = builder.toString();
         return translation;
     }
 }

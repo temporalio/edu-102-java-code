@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.temporal.learn</groupId>
-    <artifactId>farewell-workflow-practice</artifactId>
+    <artifactId>using-classes-solution</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>farewell-workflow (practice)</name>
+    <name>using-classes (solution)</name>
     <url>https://learn.temporal.io/</url>
 
     <properties>
