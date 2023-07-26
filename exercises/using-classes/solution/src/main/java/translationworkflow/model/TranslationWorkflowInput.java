@@ -1,8 +1,12 @@
 package translationworkflow.model;
 
 public class TranslationWorkflowInput {
-    private final String name;
-    private final String languageCode;
+    private String name;
+    private String languageCode;
+
+    public TranslationWorkflowInput() {
+
+    }
 
     public TranslationWorkflowInput(String name, String languageCode) {
         this.name = name;
@@ -13,7 +17,15 @@ public class TranslationWorkflowInput {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getLanguageCode() {
         return languageCode;
+    }
+
+    public void setLanguageCode(String languageCode) {
+        this.languageCode = languageCode;
     }
 }
