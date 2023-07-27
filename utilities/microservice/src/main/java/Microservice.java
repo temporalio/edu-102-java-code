@@ -1,4 +1,4 @@
-package translationworkflow;
+package translationapi;
 
 import java.io.IOException;
 
