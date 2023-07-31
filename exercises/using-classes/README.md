@@ -7,6 +7,22 @@ During this exercise, you will
 
 Make your changes to the code in the `practice` subdirectory (look for `TODO` comments that will guide you to where you should make changes to the code). If you need a hint or want to verify your changes, look at the complete version in the `solution` subdirectory.
 
+## Prerequisite: Ensure the Microservice is running
+If you haven't already started the Translation Microservice used by this exercise, 
+do so in a separate terminal.
+
+**Note: If you're using the Gitpod environment to run this exercise you can
+skip this step. An instance of the Microservice is already running in your
+environment**
+
+1. Navigate to the `utilities` directory at the root level of the course
+2. Change directoryies into the `microservice directory`
+   1. `cd utilities/microservice`
+3. Compile the microservice
+   1. `mvn clean compile`
+4. Start the microservice 
+   1. `mvn exec:java -Dexec.mainClass="translationapi.Microservice"`
+
 ## Part A: 
 This exercise provides an improved version of the translation Workflow used in Temporal 101. The Workflow has already been updated to follow the best practice of using classes to represent input parameters and return values. You'll apply what you've learned to do the same for the Activity.
 
@@ -66,7 +82,8 @@ You've now updated the Activity code to use the classes. The next step is to upd
 ## Part D: Run the Translation Workflow
 Now that you've made the necessary changes, it's time to run the Workflow to ensure that it works as expected.
 
-1. In one terminal, start the translation microservice by running `mvn exec:java -Dexec.mainClass="translationworkflow.Microservice"`
+1. Ensure that your Translation Microservice is running in a separate. See the 
+prerequisites at the top of this file for instructions. 
 2. In another terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.Worker"`
 3. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Mason de"` (replace `Mason` with your first name), which should display customized greeting and farewell messages in German.
 

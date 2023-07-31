@@ -71,14 +71,14 @@ Before proceeding, make sure that there are no Workers running for this or any p
 3. In another terminal, start a second Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
 4. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Stanislav sk"` (replace `Stanislav` with your first name) 
 5. Observe the output in the terminal windows used by each worker. 
-   6. As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, locate the terminal with the message `[ACTIVITY INVOKED]` and press Ctrl-C in _that_ window to kill that Worker process.
+   6. As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, locate the terminal with the message `[ACTIVITY INVOKED]...` and press Ctrl-C in _that_ window to kill that Worker process.
 7. Switch to the terminal window for the other Worker process. Within a few seconds, you should observe new output, indicating that it has resumed execution of the Workflow.
-8. Once you see log output indicating that translation was successful, switch back to the term inal window where you started the Workflow. 
+8. Once you see log output indicating that translation was successful, switch back to the terminal window where you started the Workflow. 
 
 After the final step, you should see the translated Hello and Goodbye messages, which confirms that Workflow Execution completed successfully despite the original Worker being killed.
 
 Since you added logging code to the Workflow and Activity code, take a moment to look at what you see in the terminal windows for each Worker and think about what took place. You may also find it helpful to look at this Workflow Execution in the Web UI.
 
-The microservice for this exercise logs each successful translation, and if you look at its terminal window, you will see that the service only translated Hello (the first Activity) once, even though the Worker was killed after this translation took place. In other words, Temporal did not re-execute the completed Activity when it restored the state of the Workflow Execution. 
+The microservice for this exercise outputs each successful translation, and if you look at its terminal window, you will see that the service only translated Hello (the first Activity) once, even though the Worker was killed after this translation took place. In other words, Temporal did not re-execute the completed Activity when it restored the state of the Workflow Execution. 
 
 ### This is the end of the exercise.

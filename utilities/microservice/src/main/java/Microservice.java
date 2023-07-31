@@ -77,6 +77,7 @@ public class Microservice {
             String message = translations.get(languageCode).get(term);
             String capMessage = message.substring(0, 1).toUpperCase() + message.substring(1);
             String response = String.format("%s", capMessage);
+            System.out.println(response);
             return U.str(response);
         }
 

@@ -8,18 +8,19 @@ import java.io.IOException;
 import io.temporal.activity.Activity;
 import translationworkflow.model.TranslationActivityInput;
 import translationworkflow.model.TranslationActivityOutput;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// TODO: Add slf4j imports here
 
 public class TranslationActivitiesImpl implements TranslationActivities {
 
-    private static final Logger logger = LoggerFactory.getLogger(TranslationActivitiesImpl.class);
+    // TODO: Define a logger for your Activities here
 
     @Override
     public TranslationActivityOutput translateTerm(TranslationActivityInput input) {
         String term = input.getTerm();
         String lang = input.getLanguageCode();
 
+        // TODO: Add an info log statement here with the string [ACTIVITY INVOKED]
+        // at the beginning along with the name of the Activity and parameters passed
         logger.info("[ACTIVITY INVOKED] translateTerm invoked with input term: {} language code: {}", term, lang);
 
         StringBuilder builder = new StringBuilder();
@@ -30,7 +31,7 @@ public class TranslationActivitiesImpl implements TranslationActivities {
         try {
             url = new URL(String.format(baseUrl, term, lang, URLEncoder.encode(term, "UTF-8")));
         } catch (IOException e) {
-            logger.error("An IOException occurred when trying to craft the URL: {}", e.toString());
+            // TODO: Add an error log statement here at the error level about the exception
             throw Activity.wrap(e);
         }
 
@@ -40,12 +41,13 @@ public class TranslationActivitiesImpl implements TranslationActivities {
                 builder.append(line);
             }
         } catch (IOException e) {
-            logger.error("An IOException was caught while attempting to connect to the microservice: {}", e.toString());
+            // TODO: Add an error log statement here detailing the exception
             throw Activity.wrap(e);
         }
 
         TranslationActivityOutput translation = new TranslationActivityOutput(builder.toString());
-        logger.debug("Translation successful: {}", translation.getTranslation());
+        // TODO: Add a debug log statement here stating the Translation was successful
+        // include the output
         return translation;
     }
 }
