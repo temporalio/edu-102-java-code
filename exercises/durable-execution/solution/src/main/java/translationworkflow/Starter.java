@@ -7,6 +7,7 @@ import translationworkflow.model.TranslationWorkflowInput;
 import translationworkflow.model.TranslationWorkflowOutput;
 
 public class Starter {
+
     public static void main(String[] args) throws Exception {
 
         WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
@@ -28,6 +29,5 @@ public class Starter {
         TranslationWorkflowOutput greeting = workflow.sayHelloGoodbye(input);
 
         System.out.printf("Workflow result: %s\n", greeting);
-        System.exit(0);
     }
 }
