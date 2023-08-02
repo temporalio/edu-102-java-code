@@ -2,6 +2,8 @@ package translationworkflow;
 
 import java.net.URL;
 import java.net.URLEncoder;
+import java.net.HttpURLConnection;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -34,14 +36,35 @@ public class TranslationActivitiesImpl implements TranslationActivities {
             throw Activity.wrap(e);
         }
 
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
+        HttpURLConnection connection;
+        try {
+            connection = (HttpURLConnection) url.openConnection();
+        } catch (IOException e) {
+            logger.error("An IOException occurred when trying to establish connection to the microservice: {}",
+                    e.toString());
+            throw Activity.wrap(e);
+        }
+
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             String line;
             while ((line = in.readLine()) != null) {
                 builder.append(line);
             }
         } catch (IOException e) {
-            logger.error("An IOException was caught while attempting to connect to the microservice: {}", e.toString());
-            throw Activity.wrap(e);
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
+                String error;
+                while ((error = in.readLine()) != null) {
+                    builder.append(error);
+                }
+                String errorMessage = "An error was caught attempting to call the microservice: " + builder.toString();
+                logger.error("errorMessage");
+                throw Activity.wrap(new IOException(errorMessage));
+            } catch (IOException ex) {
+                logger.error(
+                        "An IOException occurred when trying to establish connection to the microservice error stream: {}",
+                        e.toString());
+                throw Activity.wrap(ex);
+            }
         }
 
         TranslationActivityOutput translation = new TranslationActivityOutput(builder.toString());
