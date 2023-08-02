@@ -1,6 +1,7 @@
 package translationworkflow.model;
 
 public class TranslationActivityOutput {
+
     private String translation;
 
     public TranslationActivityOutput() {

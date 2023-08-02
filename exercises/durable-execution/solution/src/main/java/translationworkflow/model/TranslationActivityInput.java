@@ -1,6 +1,7 @@
 package translationworkflow.model;
 
 public class TranslationActivityInput {
+
     private String term;
     private String languageCode;
 
