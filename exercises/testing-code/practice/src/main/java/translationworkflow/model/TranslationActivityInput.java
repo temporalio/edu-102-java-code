@@ -41,4 +41,9 @@ public class TranslationActivityInput {
         return this.term.equals(other.term) &&
                 this.languageCode.equals(other.languageCode);
     }
+
+    @Override
+    public int hashCode() {
+        return new Objects.hash(term, languageCode);
+    }
 }

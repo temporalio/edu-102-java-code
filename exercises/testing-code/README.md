@@ -86,7 +86,7 @@ Take a moment to study this code, and then continue with the
 following steps:
 
 1. Edit the `TranslationActivitiesTest.java` file
-2. Uncomment the imports on lines 5 and 19
+2. Uncomment the imports on lines 4 (`assertThrows`) and 11 (`ActivityFailure`)
 3. Copy the entire `testFailedTranslateActivityBadLanguageCode` method
    provided above and paste it at the bottom of the `TranslationActivitiesTest.java` file 
 4. Save the changes
@@ -97,26 +97,22 @@ following steps:
 
 1. Edit the `TranslationWorkflowTest.java` file in the
 `src/main/test/java/translationworkflow` directory
-2. Uncomment the import on line 6
-3. Remove `IGNORE` from the function name on line 10 (this was added 
-   so the test didn't run in the earlier parts of this exercise, since 
-   the function name must begin with `Test` to be recognized as a test)
-4. Add assertions for the following conditions
-   * The `HelloMessage` field in the result is `Bonjour, Pierre`
-   * The `GoodbyeMessage` field in the result is `Au revoir, Pierre`
+4. Add assertions for the following conditions to the `testSuccessfulTranslation` test
+   * The `helloMessage` field in the result is `Bonjour, Pierre`
+   * The `goodbyeMessage` field in the result is `Au revoir, Pierre`
 5. Save your changes
-6. Run `go test`. This will fail, due to a bug in the Workflow Definition.
+6. Run `mvn test`. This will fail, due to a bug in the Workflow Definition.
 7. Find and fix the bug in the Workflow Definition
-8. Run the `go test` command again to verify that you fixed the bug
+8. Run the `mvn test` command again to verify that you fixed the bug
 
 There are two things to note about this test.
 
-First, the test completes in under a second, even though the Workflow 
-Definition contains a `workflow.Sleep` call that adds a 15-second delay 
+First, the test completes in a few seconds, even though the Workflow 
+Definition contains a `Workflow.Sleep` call that adds a 30-second delay 
 to the Workflow Execution. This is because of the time-skipping feature
 provided by the test environment.
 
-Second, calls to `RegisterActivity` near the top of the test indicate 
+Second, calls to `registerActivitiesImplementations` near the top of the test indicate 
 that the Activity Definitions are executed as part of this Workflow 
 test. As you learned, you can test your Workflow Definition in isolation 
 from the Activity implementations by using mocks. The optional exercise 
@@ -136,25 +132,18 @@ continue with the following steps.
 2. Edit the `TranslationWorkflowMockTest.java` file
 3. Add an import `import static org.mockito.Mockito.*;`
 4. Rename the test function to `testSuccessfulTranslationWithMocks`
-5. Delete the line used to register the Activity. 
-   This is unnecessary in a Workflow test that uses mock
-   objects for the Activity, since the *actual* Activity 
-   Definition is never executed.
-6. Make the following changes between where the struct representing
-   workflow input is defined and where `env.ExecuteWorkflow` is called
-   * Create and populate an instance of the `TranslationActivityInput`
-     struct to represent input passed to the Activity when translating 
-     the greeting
-   * Create and populate an instance of the `TranslationActivityOutput`
-     struct to represent output returned by the Activity when translating 
-     the greeting
-   * Create a mock that represents the `TranslateTerm` Activity, 
-     which will return the output struct you created when called 
-     with the input struct you created
-   * Repeat the above three steps, this time creating structs and 
-     a mock for the goodbye message
-7. Save your changes
-8. If you ran the test now as written it would fail. This is because when Java
+5. Add the following code to the beginning of the `testSuccessfulTranslationWithMocks` method
+```java
+TranslationActivities mockedActivities = mock(TranslationActivities.class, withSettings().withoutAnnotations());
+when(mockedActivities.translateTerm(new TranslationActivityInput("hello", "fr")))
+   .thenReturn(new TranslationActivityOutput("Bonjour"));
+```
+6. Copy the second line from the above code beginning with `when` and modify it 
+to mock the `translateTerm` Activity to return `Au revoir` when `goodbye` is passed
+with the `fr` language code specified.
+7. Modify the worker registration line to use the new `mockedActivities` instance.
+8. Save your changes
+9. If you ran the test now as written it would fail. This is because when Java
 does a comparison of the `TranslateActivityInput` objects it compares the object
 references, not values. To solve this, override the `equals` method in `TranlationActivityInput`
 by adding the following code at the bottom.
