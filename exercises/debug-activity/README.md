@@ -21,16 +21,16 @@ since the next part of this exercise will ask you to determine what it
 does by using the Web UI to interpret the Event History.
 
 1. Change to the `exercises/debug-activity/practice` directory
-2. Start a Worker by running `go run worker/main.go` 
+2. Start a Worker by running `mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"` 
 3. In another terminal window, run the above command to start another Worker. 
-4. In another terminal window, run `go run start/main.go` to start the Workflow
+4. In another terminal window, run `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"` to start the Workflow
 
 
 ## Part B: Interpret Workflow Execution by Using the Web UI
 
 Open the Web UI and navigate to the detail page for the Workflow 
 Execution you just ran, which has the Workflow Type `PizzaWorkflow` 
-and Workflow ID `pizza-workflow-order-Z1238`).
+and Workflow ID `pizza-workflow-order-8675309`).
 
 If the detail page still shows a status of Running, wait a few seconds 
 and refresh the page. Once the page shows a status of Completed, use 
@@ -54,20 +54,20 @@ following questions:
 5. What was the duration specified for the Timer used to delay execution?
    * Hint: this is shown as a timeout in the relevant Event
 6. Find the Event associated with the Worker completing execution of 
-   the `GetDistance` Activity
+   the `getDistance` Activity
    * What is the ID for this Event?
    * What is the ID of the Event logged when this Activity was started 
      by the Worker?
    * What is the ID of the Event logged when this Activity was scheduled 
      by the Cluster?
 7. Can you find the input data supplied as a parameter to the
-   `GetDistance` Activity?
+   `getDistance` Activity?
 8. Can you find the output data returned as output from the
-   `GetDistance` Activity?
+   `getDistance` Activity?
 9. What was the Maximum Interval value for the Retry Policy used to 
-   execute the `SendBill` Activity?
+   execute the `sendBill` Activity?
 10. What was the Start-to-Close Timeout value used when executing
-   the `SendBill` Activity?
+   the `sendBill` Activity?
 
 
 Take a moment to switch to the Compact view, and if one of the rows in the 
@@ -92,18 +92,20 @@ Note that the code models prices in cents (for example, $27 is represented
 as 2700) in order to avoid the problems that occur when a computer program 
 uses floating point numbers to represent currency.
 
-1. Edit the `start/main.go` file, which creates the input data and starts 
+1. Edit the `Starter.java` file, which creates the input data and starts 
    the Workflow
-   * Lines 64-72 create and populate structs (`p1` and `p2`) representing 
-   pizzas, which are then added to an array named `items` used in the 
-   `PizzaOrder` struct used as input to the Workflow. 
-3. Create and populate another struct, named `p3`, representing a third
+   * Lines 42-56 create and populate Pizza class instances (`pizza1` and `pizza2`) representing 
+   pizzas, which are then added to an ArrayList named `items` used in the 
+   `PizzaOrder` class used as input to the Workflow. 
+3. Create and populate another Pizza class instance, named `pizza3`, representing a third
    pizza added to the order. It should have the following values:
    * Description: "Medium, with extra cheese"
 	* Price: 1300
-4. Add `p3` to the `items` array
+4. Add `pizza3` to the `items` ArrayList
+   5. Hint: Line 49
 5. Save the changes and close the editor
-6. Submit this pizza order by starting the Workflow: `go run start/main.go`
+6. Compile your changes with `mvn clean compile`
+7. Submit this pizza order by starting the Workflow: `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"`
 
 Although the Workflow *should* complete within a few seconds, you will 
 probably find that it never does, so open the Web UI and look at the 
@@ -113,13 +115,13 @@ Do this before continuing with the next part of the exercise.
 
 ## Part D: Fixing the Activity Bug
 
-You should have observed that the `SendBill` Activity is failing with an 
+You should have observed that the `sendBill` Activity is failing with an 
 error that indicates it was supplied with an invalid (negative) charge 
 amount. Click the **Pending Activities** tab near the top of the screen 
 to display information about the failure and retries in a more convenient 
 layout. 
 
-1. Run `go test`. You should observe that all tests pass.
+1. Run `mvn test`. You should observe that all tests pass.
    * Unfortunately, the co-worker who implemented the code to apply a 
      discount did not write a test case for it. 
      Deploying the untested code is what led to this failure, but 
@@ -135,8 +137,8 @@ layout.
    * Change the expected price in the `assert.Equal` statement to `6000`, 
      which is the $65 amount minus the $5 discount.
 4. Save the changes and close the editor
-5. Run `go test`. Since you have not yet fixed the bug, the test will fail.
-6. Open the `activities.go` file in the editor and find where the `SendBill` 
+5. Run `mvn test`. Since you have not yet fixed the bug, the test will fail.
+6. Open the `PizzaActivities.java` file in the editor and find where the `sendBill` 
    Activity is defined.
 7. Examine the code where the discount is applied. Once you spot the bug, 
    fix it. 
