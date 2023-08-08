@@ -58,7 +58,7 @@ public class PizzaActivitiesImpl implements PizzaActivities {
         if (chargeAmount < 0) {
             logger.error("invalid charge amount: {%d} (must be above zero)", chargeAmount);
             String errorMessage = "invalid charge amount: " + chargeAmount;
-            Activity.wrap(new InvalidChargeAmountException(errorMessage));
+            throw Activity.wrap(new InvalidChargeAmountException(errorMessage));
         }
 
         // pretend we called a payment processing service here
