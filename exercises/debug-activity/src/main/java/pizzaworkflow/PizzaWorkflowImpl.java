@@ -2,6 +2,7 @@ package pizzaworkflow;
 
 import io.temporal.activity.ActivityOptions;
 import io.temporal.workflow.Workflow;
+import io.temporal.failure.ApplicationFailure;
 
 import pizzaworkflow.model.Address;
 import pizzaworkflow.model.Bill;
@@ -50,12 +51,13 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
             distance = activities.getDistance(address);
         } catch (NullPointerException e) {
             logger.error("Unable to get distance");
-            throw Workflow.wrap(new NullPointerException("Unable to get distance"));
+            throw new NullPointerException("Unable to get distance");
         }
 
         if (isDelivery && (distance.getKilometers() > 25)) {
             logger.error("Customer lives outside the service area");
-            throw Workflow.wrap(new OutOfServiceAreaException("Customer lives outside the service area"));
+            throw ApplicationFailure.newFailure("Customer lives outside the service area",
+                    OutOfServiceAreaException.class.getName());
         }
 
         logger.info("distance is {}", distance.getKilometers());
