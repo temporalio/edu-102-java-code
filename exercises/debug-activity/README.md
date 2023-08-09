@@ -21,16 +21,17 @@ since the next part of this exercise will ask you to determine what it
 does by using the Web UI to interpret the Event History.
 
 1. Change to the `exercises/debug-activity/practice` directory
-2. Start a Worker by running `mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"` 
-3. In another terminal window, run the above command to start another Worker. 
-4. In another terminal window, run `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"` to start the Workflow
+2. Run `mvn clean compile` to compile the code
+3. Start a Worker by running `mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"` 
+4. In another terminal window, run the above command to start another Worker. 
+5. In another terminal window, run `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"` to start the Workflow
 
 
 ## Part B: Interpret Workflow Execution by Using the Web UI
 
 Open the Web UI and navigate to the detail page for the Workflow 
 Execution you just ran, which has the Workflow Type `PizzaWorkflow` 
-and Workflow ID `pizza-workflow-order-8675309`).
+and Workflow ID `pizza-workflow-order-XD001`).
 
 If the detail page still shows a status of Running, wait a few seconds 
 and refresh the page. Once the page shows a status of Completed, use 
@@ -102,7 +103,6 @@ uses floating point numbers to represent currency.
    * Description: "Medium, with extra cheese"
 	* Price: 1300
 4. Add `pizza3` to the `items` ArrayList
-   5. Hint: Line 49
 5. Save the changes and close the editor
 6. Compile your changes with `mvn clean compile`
 7. Submit this pizza order by starting the Workflow: `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"`
@@ -127,14 +127,14 @@ layout.
      Deploying the untested code is what led to this failure, but 
      writing a test now will help you to verify the fix. 
 2. Open the `activity_test.go` file in the editor
-3. Add a new test by copying the existing `TestSendBillTypicalOrder`
-   function and renaming the new function as `TestSendBillAppliesDiscount`, 
+3. Add a new test by copying the existing `testSendBillTypicalOrder`
+   function and renaming the new function as `testSendBillAppliesDiscount`, 
    and then make the following changes to it:
-   * Change the `Description` to `5 large cheese pizzas`
-   * Change the `Amount` to `6500` ($65)
-   * Change the comment next to the `Amount` field to say 
+   * Change the `description` to `5 large cheese pizzas`
+   * Change the `amount` to `6500` ($65)
+   * Change the comment next to the `amount` field to say 
      `amount qualifies for discount`
-   * Change the expected price in the `assert.Equal` statement to `6000`, 
+   * Change the expected price in the `assertEquals` statement to `6000`, 
      which is the $65 amount minus the $5 discount.
 4. Save the changes and close the editor
 5. Run `mvn test`. Since you have not yet fixed the bug, the test will fail.
@@ -146,7 +146,7 @@ layout.
 
 Make sure the bug is fixed before continuing to the next part. Since 
 you wrote a test case for this, you can verify that it's fixed by 
-running `go test` again.
+running `mvn clean compile && mvn test` again.
 
 
 ## Part E: Deploying and Verifying the Fix
@@ -155,8 +155,8 @@ running `go test` again.
    Since Workers cache the code, the changes won't take effect until 
    they have been restarted. Do not press Ctrl-C in the terminal used
    to start the Workflow.
-2. Start both Workers by running `go run worker/main.go` in their respective 
-   terminals.
+2. Start both Workers by running `mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"` 
+in their respective terminals.
 3. Click the **History** tab near the top of the detail page in the Web UI
 4. Click the toggle button labeled **Auto refresh** near the upper-right
    portion of the screen. This will refresh the page every 15 seconds.
