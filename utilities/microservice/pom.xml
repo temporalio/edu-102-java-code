@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.temporal.learn</groupId>
-    <artifactId>using-classes-solution</artifactId>
+    <artifactId>translation-microservice</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>using-classes (solution)</name>
+    <name>translation-microservice</name>
     <url>https://learn.temporal.io/</url>
 
     <properties>
