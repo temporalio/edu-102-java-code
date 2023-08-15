@@ -28,13 +28,7 @@ public class LoanProcessingWorkflowImpl implements LoanProcessingWorkflow {
 
         int totalPaid = 0;
 
-        int version = Workflow.getVersion("MovedThankYouAfterLoop", Workflow.DEFAULT_VERSION, 1);
-
-        if (version == Workflow.DEFAULT_VERSION) {
-            // for workflow executions started before the change, send thank you before the
-            // loop
-            String confirmation = activities.sendThankYouToCustomer(info);
-        }
+        String confirmation = activities.sendThankYouToCustomer(info);
 
         for (int period = 1; period <= numberOfPeriods; period++) {
 
@@ -45,12 +39,6 @@ public class LoanProcessingWorkflowImpl implements LoanProcessingWorkflow {
 
             // using 3 seconds instead of 30 days for faster results
             Workflow.sleep(Duration.ofSeconds(3));
-        }
-
-        if (version == 1) {
-            // for workflow executions started before the change, send thank you before the
-            // loop
-            String confirmation = activities.sendThankYouToCustomer(info);
         }
 
         return String.format("Loan for customer %s has been fully paid (total=%d)", customerID, totalPaid);
