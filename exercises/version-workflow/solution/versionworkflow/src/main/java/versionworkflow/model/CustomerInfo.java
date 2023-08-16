@@ -7,6 +7,10 @@ public class CustomerInfo {
     private int amount;
     private int numberOfPeriods;
 
+    public CustomerInfo() {
+
+    }
+
     public CustomerInfo(String customerID, String name, String emailAddress, int amount, int numberOfPeriods) {
         this.customerID = customerID;
         this.name = name;

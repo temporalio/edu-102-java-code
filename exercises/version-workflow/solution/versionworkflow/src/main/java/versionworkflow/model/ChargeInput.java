@@ -6,6 +6,9 @@ public class ChargeInput {
     private int periodNumber;
     private int numberOfPeriods;
 
+    public ChargeInput() {
+    }
+
     public ChargeInput(String customerID, int amount, int periodNumber, int numberOfPeriods) {
         this.customerID = customerID;
         this.amount = amount;
