@@ -42,6 +42,5 @@ public class LoanProcessingWorkflowImpl implements LoanProcessingWorkflow {
         }
 
         return String.format("Loan for customer %s has been fully paid (total=%d)", customerID, totalPaid);
-
     }
 }
