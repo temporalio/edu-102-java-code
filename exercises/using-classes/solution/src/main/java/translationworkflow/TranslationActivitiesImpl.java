@@ -11,32 +11,32 @@ import translationworkflow.model.TranslationActivityOutput;
 
 public class TranslationActivitiesImpl implements TranslationActivities {
 
-    @Override
-    public TranslationActivityOutput translateTerm(TranslationActivityInput input) {
-        String term = input.getTerm();
-        String lang = input.getLanguageCode();
+  @Override
+  public TranslationActivityOutput translateTerm(TranslationActivityInput input) {
+    String term = input.getTerm();
+    String lang = input.getLanguageCode();
 
-        StringBuilder builder = new StringBuilder();
+    StringBuilder builder = new StringBuilder();
 
-        String baseUrl = "http://localhost:9999/translate?term=%s&lang=%s";
+    String baseUrl = "http://localhost:9999/translate?term=%s&lang=%s";
 
-        URL url = null;
-        try {
-            url = new URL(String.format(baseUrl, term, lang, URLEncoder.encode(term, "UTF-8")));
-        } catch (IOException e) {
-            throw Activity.wrap(e);
-        }
-
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
-            String line;
-            while ((line = in.readLine()) != null) {
-                builder.append(line);
-            }
-        } catch (IOException e) {
-            throw Activity.wrap(e);
-        }
-
-        TranslationActivityOutput translation = new TranslationActivityOutput(builder.toString());
-        return translation;
+    URL url = null;
+    try {
+      url = new URL(String.format(baseUrl, term, lang, URLEncoder.encode(term, "UTF-8")));
+    } catch (IOException e) {
+      throw Activity.wrap(e);
     }
+
+    try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
+      String line;
+      while ((line = in.readLine()) != null) {
+        builder.append(line);
+      }
+    } catch (IOException e) {
+      throw Activity.wrap(e);
+    }
+
+    TranslationActivityOutput translation = new TranslationActivityOutput(builder.toString());
+    return translation;
+  }
 }

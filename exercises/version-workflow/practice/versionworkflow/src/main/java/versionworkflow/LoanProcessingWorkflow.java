@@ -8,7 +8,7 @@ import versionworkflow.model.CustomerInfo;
 @WorkflowInterface
 public interface LoanProcessingWorkflow {
 
-    @WorkflowMethod
-    public String loanProcessingWorkflow(CustomerInfo info);
+  @WorkflowMethod
+  public String loanProcessingWorkflow(CustomerInfo info);
 
 }

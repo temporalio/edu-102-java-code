@@ -7,6 +7,6 @@ import translationworkflow.model.TranslationActivityOutput;
 @ActivityInterface
 public interface TranslationActivities {
 
-    TranslationActivityOutput translateTerm(TranslationActivityInput input);
+  TranslationActivityOutput translateTerm(TranslationActivityInput input);
 
 }

@@ -8,40 +8,38 @@ import org.slf4j.LoggerFactory;
 
 public class LoanProcessingActivitiesImpl implements LoanProcessingActivities {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoanProcessingActivitiesImpl.class);
+  private static final Logger logger = LoggerFactory.getLogger(LoanProcessingActivitiesImpl.class);
 
-    @Override
-    public String chargeCustomer(ChargeInput input) {
-        String customerID = input.getCustomerID();
-        int amount = input.getAmount();
-        int numberOfPeriods = input.getNumberOfPeriods();
+  @Override
+  public String chargeCustomer(ChargeInput input) {
+    String customerId = input.getCustomerID();
+    int amount = input.getAmount();
+    int numberOfPeriods = input.getNumberOfPeriods();
 
-        logger.info(
-                "*** Charging customer***: CustomerID: {}, Amount {}, Number of Periods: {}",
-                customerID, amount, numberOfPeriods);
+    logger.info("*** Charging customer***: CustomerID: {}, Amount {}, Number of Periods: {}",
+        customerId, amount, numberOfPeriods);
 
-        // pretend we charge them
+    // pretend we charge them
 
-        String confirmation = String.format("Charged %d to customer '%s'", amount, customerID);
+    String confirmation = String.format("Charged %d to customer '%s'", amount, customerId);
 
-        return confirmation;
+    return confirmation;
 
-    }
+  }
 
-    @Override
-    public String sendThankYouToCustomer(CustomerInfo input) {
+  @Override
+  public String sendThankYouToCustomer(CustomerInfo input) {
 
-        String customerID = input.getCustomerID();
-        String email = input.getEmailAddress();
-        
+    String customerId = input.getCustomerID();
+    String email = input.getEmailAddress();
 
-        logger.info(
-                "*** Sending thank you message to Customer ***: CustomerID: {}, Email {}",
-                customerID, email);
 
-        String confirmation = String.format("Sent thank you message to customer '%s'", customerID);
+    logger.info("*** Sending thank you message to Customer ***: CustomerID: {}, Email {}",
+        customerId, email);
 
-        return confirmation;
-    }
+    String confirmation = String.format("Sent thank you message to customer '%s'", customerId);
+
+    return confirmation;
+  }
 
 }

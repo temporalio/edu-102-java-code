@@ -8,7 +8,7 @@ import translationworkflow.model.TranslationWorkflowOutput;
 @WorkflowInterface
 public interface TranslationWorkflow {
 
-    @WorkflowMethod
-    TranslationWorkflowOutput sayHelloGoodbye(TranslationWorkflowInput input);
+  @WorkflowMethod
+  TranslationWorkflowOutput sayHelloGoodbye(TranslationWorkflowInput input);
 
 }

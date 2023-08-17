@@ -9,7 +9,7 @@ import pizzaworkflow.model.OrderConfirmation;
 @WorkflowInterface
 public interface PizzaWorkflow {
 
-    @WorkflowMethod
-    OrderConfirmation orderPizza(PizzaOrder order);
+  @WorkflowMethod
+  OrderConfirmation orderPizza(PizzaOrder order);
 
 }

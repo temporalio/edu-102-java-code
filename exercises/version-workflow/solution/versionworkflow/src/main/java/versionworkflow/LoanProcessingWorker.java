@@ -5,22 +5,19 @@ import io.temporal.serviceclient.WorkflowServiceStubs;
 import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
 
-import versionworkflow.LoanProcessingActivitiesImpl;
-import versionworkflow.LoanProcessingWorkflowImpl;
-
 public class LoanProcessingWorker {
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
-        WorkflowClient client = WorkflowClient.newInstance(service);
-        WorkerFactory factory = WorkerFactory.newInstance(client);
+    WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+    WorkflowClient client = WorkflowClient.newInstance(service);
+    WorkerFactory factory = WorkerFactory.newInstance(client);
 
-        Worker worker = factory.newWorker(Constants.taskQueueName);
+    Worker worker = factory.newWorker(Constants.taskQueueName);
 
-        worker.registerWorkflowImplementationTypes(LoanProcessingWorkflowImpl.class);
+    worker.registerWorkflowImplementationTypes(LoanProcessingWorkflowImpl.class);
 
-        worker.registerActivitiesImplementations(new LoanProcessingActivitiesImpl());
+    worker.registerActivitiesImplementations(new LoanProcessingActivitiesImpl());
 
-        factory.start();
-    }
+    factory.start();
+  }
 }

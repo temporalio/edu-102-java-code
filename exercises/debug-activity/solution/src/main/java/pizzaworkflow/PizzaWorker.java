@@ -6,18 +6,18 @@ import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
 
 public class PizzaWorker {
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
-        WorkflowClient client = WorkflowClient.newInstance(service);
-        WorkerFactory factory = WorkerFactory.newInstance(client);
+    WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+    WorkflowClient client = WorkflowClient.newInstance(service);
+    WorkerFactory factory = WorkerFactory.newInstance(client);
 
-        Worker worker = factory.newWorker(Constants.taskQueueName);
+    Worker worker = factory.newWorker(Constants.taskQueueName);
 
-        worker.registerWorkflowImplementationTypes(PizzaWorkflowImpl.class);
+    worker.registerWorkflowImplementationTypes(PizzaWorkflowImpl.class);
 
-        worker.registerActivitiesImplementations(new PizzaActivitiesImpl());
+    worker.registerActivitiesImplementations(new PizzaActivitiesImpl());
 
-        factory.start();
-    }
+    factory.start();
+  }
 }

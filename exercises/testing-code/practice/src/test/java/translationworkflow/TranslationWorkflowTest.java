@@ -13,20 +13,21 @@ import translationworkflow.model.TranslationWorkflowOutput;
 
 public class TranslationWorkflowTest {
 
-    @RegisterExtension
-    public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension.newBuilder()
-            .setWorkflowTypes(TranslationWorkflowImpl.class)
-            .setDoNotStart(true)
-            .build();
+  @RegisterExtension
+  public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension
+      .newBuilder().setWorkflowTypes(TranslationWorkflowImpl.class).setDoNotStart(true).build();
 
-    @Test
-    public void testSuccessfulTranslation(TestWorkflowEnvironment testEnv, Worker worker,
-            TranslationWorkflow workflow) {
-        worker.registerActivitiesImplementations(new TranslationActivitiesImpl());
-        testEnv.start();
+  @Test
+  public void testSuccessfulTranslation(TestWorkflowEnvironment testEnv, Worker worker,
+      TranslationWorkflow workflow) {
+    worker.registerActivitiesImplementations(new TranslationActivitiesImpl());
+    testEnv.start();
 
-        TranslationWorkflowOutput output = workflow.sayHelloGoodbye(new TranslationWorkflowInput("Pierre", "fr"));
+    TranslationWorkflowOutput output =
+        workflow.sayHelloGoodbye(new TranslationWorkflowInput("Pierre", "fr"));
 
-        // TODO: Part D - Add asserts for the hello and goodbye me
+    // TODO: Part D - Add asserts for the hello and goodbye me
+  }
+}
 
-        
+

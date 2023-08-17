@@ -16,22 +16,19 @@ import io.temporal.testing.WorkflowReplayer;
 
 public class LoanProcessingWorkflowTest {
 
-    @RegisterExtension
-    public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension.newBuilder()
-            .setWorkflowTypes(LoanProcessingWorkflowImpl.class)
-            .setDoNotStart(true)
-            .build();
+  @RegisterExtension
+  public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension
+      .newBuilder().setWorkflowTypes(LoanProcessingWorkflowImpl.class).setDoNotStart(true).build();
 
-    @Test
-    public void testSuccessfulReplay(TestWorkflowEnvironment testEnv, Worker worker,
-            LoanProcessingWorkflow workflow) throws Exception {
+  @Test
+  public void testSuccessfulReplay(TestWorkflowEnvironment testEnv, Worker worker,
+      LoanProcessingWorkflow workflow) throws Exception {
 
-        File eventHistoryFile = new File("history_for_original_execution.json");
+    File eventHistoryFile = new File("history_for_original_execution.json");
 
-        assertDoesNotThrow(
-                () -> WorkflowReplayer.replayWorkflowExecution(eventHistoryFile,
-                        LoanProcessingWorkflowImpl.class));
+    assertDoesNotThrow(() -> WorkflowReplayer.replayWorkflowExecution(eventHistoryFile,
+        LoanProcessingWorkflowImpl.class));
 
-    }
+  }
 
 }

@@ -16,26 +16,26 @@ import static org.mockito.Mockito.*;
 
 public class TranslationWorkflowMockTest {
 
-    @RegisterExtension
-    public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension.newBuilder()
-            .setWorkflowTypes(TranslationWorkflowImpl.class)
-            .setDoNotStart(true)
-            .build();
+  @RegisterExtension
+  public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension
+      .newBuilder().setWorkflowTypes(TranslationWorkflowImpl.class).setDoNotStart(true).build();
 
-    @Test
-    public void testSuccessfulTranslationWithMocks(TestWorkflowEnvironment testEnv, Worker worker,
-            TranslationWorkflow workflow) {
-        TranslationActivities mockedActivities = mock(TranslationActivities.class, withSettings().withoutAnnotations());
-        when(mockedActivities.translateTerm(new TranslationActivityInput("hello", "fr")))
-                .thenReturn(new TranslationActivityOutput("Bonjour"));
-        when(mockedActivities.translateTerm(new TranslationActivityInput("goodbye", "fr")))
-                .thenReturn(new TranslationActivityOutput("Au revoir"));
-        worker.registerActivitiesImplementations(mockedActivities);
-        testEnv.start();
+  @Test
+  public void testSuccessfulTranslationWithMocks(TestWorkflowEnvironment testEnv, Worker worker,
+      TranslationWorkflow workflow) {
+    TranslationActivities mockedActivities =
+        mock(TranslationActivities.class, withSettings().withoutAnnotations());
+    when(mockedActivities.translateTerm(new TranslationActivityInput("hello", "fr")))
+        .thenReturn(new TranslationActivityOutput("Bonjour"));
+    when(mockedActivities.translateTerm(new TranslationActivityInput("goodbye", "fr")))
+        .thenReturn(new TranslationActivityOutput("Au revoir"));
+    worker.registerActivitiesImplementations(mockedActivities);
+    testEnv.start();
 
-        TranslationWorkflowOutput output = workflow.sayHelloGoodbye(new TranslationWorkflowInput("Pierre", "fr"));
+    TranslationWorkflowOutput output =
+        workflow.sayHelloGoodbye(new TranslationWorkflowInput("Pierre", "fr"));
 
-        assertEquals("Bonjour, Pierre", output.getHelloMessage());
-        assertEquals("Au revoir, Pierre", output.getGoodbyeMessage());
-    }
+    assertEquals("Bonjour, Pierre", output.getHelloMessage());
+    assertEquals("Au revoir, Pierre", output.getGoodbyeMessage());
+  }
 }

@@ -4,4 +4,9 @@
     ],
     "workbench.startupEditor": "none",
     "editor.minimap.enabled": false,
+    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    "java.checkstyle.configuration": "/google_checks.xml",
+    "[java]": {
+        "editor.tabSize": 2
+    }
 }

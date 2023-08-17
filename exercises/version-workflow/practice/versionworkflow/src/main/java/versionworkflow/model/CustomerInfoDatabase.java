@@ -3,5 +3,5 @@ package versionworkflow.model;
 import versionworkflow.model.CustomerInfoDatabase;
 
 public interface CustomerInfoDatabase {
-    CustomerInfo get(String customerID);
+  CustomerInfo get(String customerId);
 }

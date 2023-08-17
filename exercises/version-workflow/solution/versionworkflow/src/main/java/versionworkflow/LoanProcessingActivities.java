@@ -7,8 +7,8 @@ import versionworkflow.model.CustomerInfo;
 @ActivityInterface
 public interface LoanProcessingActivities {
 
-    public String chargeCustomer(ChargeInput input);
+  public String chargeCustomer(ChargeInput input);
 
-    public String sendThankYouToCustomer(CustomerInfo input);
+  public String sendThankYouToCustomer(CustomerInfo input);
 
 }
