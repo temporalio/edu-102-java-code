@@ -18,10 +18,13 @@ import translationworkflow.model.TranslationActivityOutput;
 public class TranslationActivitiesTest {
 
   private TestActivityEnvironment testEnvironment;
+  private TranslationActivities activity;
 
   @BeforeEach
   public void init() {
     testEnvironment = TestActivityEnvironment.newInstance();
+    testEnvironment.registerActivitiesImplementations(new TranslationActivitiesImpl());
+    activity = testEnvironment.newActivityStub(TranslationActivities.class);
   }
 
   @AfterEach
@@ -31,8 +34,6 @@ public class TranslationActivitiesTest {
 
   @Test
   public void testSuccessfulTranslateActivityHelloGerman() {
-    testEnvironment.registerActivitiesImplementations(new TranslationActivitiesImpl());
-    TranslationActivities activity = testEnvironment.newActivityStub(TranslationActivities.class);
     TranslationActivityInput input = new TranslationActivityInput("hello", "de");
     TranslationActivityOutput output = activity.translateTerm(input);
     assertEquals("Hallo", output.getTranslation());
@@ -40,8 +41,6 @@ public class TranslationActivitiesTest {
 
   @Test
   public void testSuccessfulTranslateActivityHelloLatvian() {
-    testEnvironment.registerActivitiesImplementations(new TranslationActivitiesImpl());
-    TranslationActivities activity = testEnvironment.newActivityStub(TranslationActivities.class);
     TranslationActivityInput input = new TranslationActivityInput("goodbye", "lv");
     TranslationActivityOutput output = activity.translateTerm(input);
     assertEquals("Ardievu", output.getTranslation());
@@ -49,8 +48,6 @@ public class TranslationActivitiesTest {
 
   @Test
   public void testFailedTranslateActivityBadLanguageCode() {
-    testEnvironment.registerActivitiesImplementations(new TranslationActivitiesImpl());
-    TranslationActivities activity = testEnvironment.newActivityStub(TranslationActivities.class);
     TranslationActivityInput input = new TranslationActivityInput("goodbye", "xq");
 
     // Assert that an error was thrown and it was an Activity Failure
