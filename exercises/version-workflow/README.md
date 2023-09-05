@@ -122,7 +122,7 @@ version is `workflow.DefaultVersion` and the maximum supported version
 is `1`.
 
 1. Add a conditional statement just after this new line: If the value
-   of `version` is equal to `@orkflow.DefaultVersion`, meaning that it
+   of `version` is equal to `@Workflow.DefaultVersion`, meaning that it
    represents a Workflow Execution started when the Activity was called
    before the loop, then invoke the Activity call there.  In other
    words, copy the same lines you moved after the loop to inside the
