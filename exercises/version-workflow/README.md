@@ -135,7 +135,7 @@ is `1`.
 4. Change the duration of the `Workflow.Sleep` statement at the
    bottom of the loop back to 3 seconds. This is unrelated to
    versioning and changing the duration of a timer does not require versioning,
-   but will help you see the results more quickly.
+   gbut will help you see the results more quickly.
 5. Run `mvn clean test` again. You should find it succeeds this time,
    since you've used the `getVersion` API to restore compatibility with
    the previous execution.
