@@ -25,7 +25,7 @@ public class Microservice {
     // Start the service on the specified IP address and port
     On.address(SERVER_IP).port(PORT_NUMBER);
 
-    final HashMap<String, HashMap<String, String>> translations = setTranslations();
+    final Map<String, Map<String, String>> translations = loadTranslations();
 
     // Define the service endpoints and handlers
     On.get("/translate").plain(new TranslationHandler(translations));
@@ -33,17 +33,18 @@ public class Microservice {
     // Also define a catch-all to return an HTTP 404 Not Found error if the URL
     // path in the request didn't match an endpoint defined above. It's essential
     // that this code remains at the end.
-    On.req((req, resp) -> {
-      String message = String.format("Error: Invalid endpoint address '%s'", req.path());
-      return req.response().result(message).code(404);
-    });
+    On.req(
+        (req, resp) -> {
+          String message = String.format("Error: Invalid endpoint address '%s'", req.path());
+          return req.response().result(message).code(404);
+        });
   }
 
   private static class TranslationHandler implements ReqRespHandler {
 
-    private HashMap<String, HashMap<String, String>> translations;
+    private final Map<String, Map<String, String>> translations;
 
-    public TranslationHandler(HashMap<String, HashMap<String, String>> translations) {
+    public TranslationHandler(Map<String, Map<String, String>> translations) {
       super();
       this.translations = translations;
     }
@@ -56,6 +57,7 @@ public class Microservice {
         String message = "Error: Missing required 'term' parameter!";
         return req.response().result(message).code(500);
       }
+
       if (!params.containsKey("lang")) {
         String message = "Error: Missing required 'lang' parameter!";
         return req.response().result(message).code(500);
@@ -78,66 +80,65 @@ public class Microservice {
       String capMessage = message.substring(0, 1).toUpperCase() + message.substring(1);
       String response = String.format("%s", capMessage);
       System.out.println(response);
+
       return U.str(response);
     }
-
   }
 
-  private static HashMap<String, HashMap<String, String>> setTranslations() {
+  private static Map<String, Map<String, String>> loadTranslations() {
+    Map<String, Map<String, String>> translations = new HashMap<>();
 
-    HashMap<String, HashMap<String, String>> translations =
-        new HashMap<String, HashMap<String, String>>();
     // German translations
-    HashMap<String, String> germanTranslations = new HashMap<String, String>();
+    Map<String, String> germanTranslations = new HashMap<>();
     germanTranslations.put("hello", "hallo");
     germanTranslations.put("goodbye", "auf wiedersehen");
     germanTranslations.put("thanks", "danke schön");
     translations.put("de", germanTranslations);
 
     // Spanish translations
-    HashMap<String, String> spanishTranslations = new HashMap<String, String>();
+    Map<String, String> spanishTranslations = new HashMap<>();
     spanishTranslations.put("hello", "hola");
     spanishTranslations.put("goodbye", "adiós");
     spanishTranslations.put("thanks", "gracias");
     translations.put("es", spanishTranslations);
 
     // French translations
-    HashMap<String, String> frenchTranslations = new HashMap<String, String>();
+    Map<String, String> frenchTranslations = new HashMap<>();
     frenchTranslations.put("hello", "bonjour");
     frenchTranslations.put("goodbye", "au revoir");
     frenchTranslations.put("thanks", "merci");
     translations.put("fr", frenchTranslations);
 
     // Latvian translations
-    HashMap<String, String> latvianTranslations = new HashMap<String, String>();
+    Map<String, String> latvianTranslations = new HashMap<>();
     latvianTranslations.put("hello", "sveiks");
     latvianTranslations.put("goodbye", "ardievu");
     latvianTranslations.put("thanks", "paldies");
     translations.put("lv", latvianTranslations);
 
     // Maori translations
-    HashMap<String, String> maoriTranslations = new HashMap<String, String>();
+    Map<String, String> maoriTranslations = new HashMap<>();
     maoriTranslations.put("hello", "kia ora");
     maoriTranslations.put("goodbye", "poroporoaki");
     maoriTranslations.put("thanks", "whakawhetai koe");
     translations.put("mi", maoriTranslations);
 
     // Slovak translations
-    HashMap<String, String> slovakTranslations = new HashMap<String, String>();
+    Map<String, String> slovakTranslations = new HashMap<>();
     slovakTranslations.put("hello", "ahoj");
     slovakTranslations.put("goodbye", "zbohom");
     slovakTranslations.put("thanks", "ďakujem koe");
     translations.put("sk", slovakTranslations);
 
     // Turkish translations
-    HashMap<String, String> turkishTranslations = new HashMap<String, String>();
+    Map<String, String> turkishTranslations = new HashMap<>();
     turkishTranslations.put("hello", "merhaba");
     turkishTranslations.put("goodbye", "güle güle");
     turkishTranslations.put("thanks", "teşekkür ederim");
     translations.put("tr", turkishTranslations);
 
     // Zulu translations
-    HashMap<String, String> zuluTranslations = new HashMap<String, String>();
+    Map<String, String> zuluTranslations = new HashMap<>();
     zuluTranslations.put("hello", "hamba kahle");
     zuluTranslations.put("goodbye", "sawubona");
     zuluTranslations.put("thanks", "ngiyabonga");
@@ -145,5 +146,4 @@ public class Microservice {
 
     return translations;
   }
-
 }
