@@ -5,11 +5,12 @@ import io.temporal.workflow.Workflow;
 
 import java.time.Duration;
 
-
 public class AgeEstimationWorkflowImpl implements AgeEstimationWorkflow {
 
-  ActivityOptions options =
-      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5)).build();
+  private final ActivityOptions options =
+      ActivityOptions.newBuilder()
+          .setStartToCloseTimeout(Duration.ofSeconds(5))
+          .build();
 
   private final AgeEstimationActivities activities =
       Workflow.newActivityStub(AgeEstimationActivities.class, options);

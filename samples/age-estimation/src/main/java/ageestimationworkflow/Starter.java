@@ -11,12 +11,12 @@ public class Starter {
 
     WorkflowClient client = WorkflowClient.newInstance(service);
 
-    String workflowId = Constants.workflowId;
-
     String name = args[0];
 
-    WorkflowOptions options = WorkflowOptions.newBuilder().setWorkflowId(workflowId)
-        .setTaskQueue(Constants.taskQueueName).build();
+    WorkflowOptions options = WorkflowOptions.newBuilder()
+        .setWorkflowId("testing-estimate-age-example")
+        .setTaskQueue(Constants.TASK_QUEUE_NAME)
+        .build();
 
     AgeEstimationWorkflow workflow = client.newWorkflowStub(AgeEstimationWorkflow.class, options);
 

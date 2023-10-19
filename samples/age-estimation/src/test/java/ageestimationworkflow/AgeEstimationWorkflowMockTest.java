@@ -15,8 +15,11 @@ import static org.mockito.Mockito.*;
 public class AgeEstimationWorkflowMockTest {
 
   @RegisterExtension
-  public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension
-      .newBuilder().setWorkflowTypes(AgeEstimationWorkflowImpl.class).setDoNotStart(true).build();
+  public static final TestWorkflowExtension testWorkflowExtension = 
+      TestWorkflowExtension.newBuilder()
+          .setWorkflowTypes(AgeEstimationWorkflowImpl.class)
+          .setDoNotStart(true)
+          .build();
 
   @Test
   public void testSuccessfulAgeEstimation(TestWorkflowEnvironment testEnv, Worker worker,

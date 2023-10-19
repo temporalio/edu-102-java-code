@@ -2,7 +2,6 @@ package ageestimationworkflow;
 
 public class Constants {
 
-  public static final String taskQueueName = "testing-estimate-age-tasks";
-  public static final String workflowId = "testing-estimate-age-example";
+  public static final String TASK_QUEUE_NAME = "testing-estimate-age-tasks";
 
 }

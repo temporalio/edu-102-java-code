@@ -5,14 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.time.Instant;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ageestimationworkflow.model.EstimatorResponse;
 
 import io.temporal.activity.Activity;
-
 
 public class AgeEstimationActivitiesImpl implements AgeEstimationActivities {
 

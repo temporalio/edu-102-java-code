@@ -1,13 +1,12 @@
 package ageestimationworkflow.model;
 
-import java.util.List;
-
 public class EstimatorResponse {
   private int age;
   private int count;
   private String name;
 
-  public EstimatorResponse() {}
+  public EstimatorResponse() {
+  }
 
   public EstimatorResponse(int age, int count, String name) {
     this.age = age;

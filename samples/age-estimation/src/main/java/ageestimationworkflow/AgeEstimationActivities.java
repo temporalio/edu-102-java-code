@@ -6,4 +6,5 @@ import io.temporal.activity.ActivityInterface;
 public interface AgeEstimationActivities {
 
   int retrieveEstimate(String name);
+
 }
