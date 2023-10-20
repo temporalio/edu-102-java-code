@@ -17,7 +17,7 @@ public class TranslationActivitiesImpl implements TranslationActivities {
   // TODO Replace the return value (String) with the name of the class you defined
   // as output
   public String translateTerm(String inputTerm, String languageCode) {
-	// TODO Change the parameters used in these two calls to
+    // TODO Change the parameters used in these two calls to
     // use the getters from the class you defined to retrieve the input
     String term = inputTerm;
     String lang = languageCode;
@@ -47,7 +47,7 @@ public class TranslationActivitiesImpl implements TranslationActivities {
     }
 
     // TODO Modify the return value to use your output class
-	String translation = content.toString();
+    String translation = content.toString();
     return translation;
   }
 }
