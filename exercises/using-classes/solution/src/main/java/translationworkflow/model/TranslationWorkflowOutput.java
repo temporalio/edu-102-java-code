@@ -5,7 +5,6 @@ public class TranslationWorkflowOutput {
   private String goodbyeMessage;
 
   public TranslationWorkflowOutput() {
-
   }
 
   public TranslationWorkflowOutput(String helloMessage, String goodbyeMessage) {

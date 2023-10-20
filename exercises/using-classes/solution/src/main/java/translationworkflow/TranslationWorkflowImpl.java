@@ -11,8 +11,10 @@ import java.time.Duration;
 
 public class TranslationWorkflowImpl implements TranslationWorkflow {
 
-  ActivityOptions options =
-      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5)).build();
+  private final ActivityOptions options =
+      ActivityOptions.newBuilder()
+          .setStartToCloseTimeout(Duration.ofSeconds(5))
+          .build();
 
   private final TranslationActivities activities =
       Workflow.newActivityStub(TranslationActivities.class, options);
