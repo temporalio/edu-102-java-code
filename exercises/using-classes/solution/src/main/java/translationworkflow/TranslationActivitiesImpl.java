@@ -41,6 +41,7 @@ public class TranslationActivitiesImpl implements TranslationActivities {
       throw Activity.wrap(e);
     }
 
-    return new TranslationActivityOutput(content.toString());
+    String translation = content.toString();
+    return new TranslationActivityOutput(translation);
   }
 }
