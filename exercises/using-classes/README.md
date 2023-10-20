@@ -35,7 +35,7 @@ First you'll define the classes to used for storing the results of the execution
 of your activities.
 
 1. Edit the `TranslationActivityInput.java` file in the `model` directory and finish
-defining the `TranslationeActivityInput` class 
+defining the `TranslationActivityInput` class 
    1. Define an instance variable named `term` of type `String`
    2. Define an instance variable named `languageCode` of type `String` 
    3. Define a constructor that takes `term` and `languageCode` and stores the values in the appropriate instance variables
