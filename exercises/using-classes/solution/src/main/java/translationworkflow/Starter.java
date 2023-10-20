@@ -28,5 +28,6 @@ public class Starter {
     TranslationWorkflowOutput greeting = workflow.sayHelloGoodbye(input);
 
     System.out.printf("Workflow result: %s\n", greeting);
+	System.exit(0);
   }
 }

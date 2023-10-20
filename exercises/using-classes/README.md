@@ -35,46 +35,51 @@ First you'll define the classes to used for storing the results of the execution
 of your activities.
 
 1. Edit the `TranslationActivityInput.java` file in the `model` directory and finish
-defining the `TranslateActivityInput` class 
+defining the `TranslationeActivityInput` class 
    1. Define an instance variable named `term` of type `String`
    2. Define an instance variable named `languageCode` of type `String` 
    3. Define a constructor that takes `term` and `languageCode` and stores the values in the appropriate instance variables
-   4. Define the public methods `getTerm` and `getLanguageCode` to return the values stored in the instance variable
-   5. Save your changes
+   4. Define public methods `getTerm` and `getLanguageCode` that return the value stored in the appropriate instance variable
+   5. Define public methods `setTerm` and `setLanguageCode` that accept a String as input and assigns it to the appropriate instance variable
+   6. Save your changes
 2. Edit the `TranslationActivityOutput.java` file in the `model` directory and finish
-defining the `TranslateActivityOutput` class 
+defining the `TranslationActivityOutput` class 
    1. Define a field named `translation` of type `String` 
-   2. Define a constructor that takes `translation` and stores the values in the appropriate instance variable
-   3. Define a public method `getTranslation` to return the value stored in the instance variable
-   4. Save your changes
+   2. Define a constructor that accepts a String parameter and assigns its values to the instance variable
+   3. Define a public method `getTranslation` that returns the value stored in the instance variable
+   4. Define a public method `setTranslation` that accepts a String as input and assigns it to the instance variable
+   5. Save your changes
 
 
 ## Part B: Use the Classes in Your Activity
-Now that you have defined the class, you must update the Activity code to use them.
+Now that you have defined the classes, you must update the Activity code to use them.
 
 1. Edit the `TranslationActivities.java` file
-   1. Replace the last two input parameters in the `translateTerm` method header with the class you defined as input
-   2. Replace the return type (String) in the `translateTerm` method header with the name of the class you defined as output
+   1. Replace the two input parameters in the `translateTerm` method declaration with the class you defined as input
+   2. Replace the return type (String) of the `translateTerm` method declaration with the name of the class you defined as output
    3. Save your changes
 2. Edit the `TranslationActivitiesImpl.java` file
-   1. Replace the last two input parameters in the `translateTerm` method with the class you defined as input
-   2. Replace the return type (String) in the `translateTerm` method with the name of the class you defined as output 
-   3. At the end of the method, create an instance of the `TranslationActivityOutput` class, passing in the result of the `StringBuilder` as a parameter, which holds the translation returned in the microservice.call.  
-   4. Return the object of the `TranslationActivityOutput` class created in the previous step
-   5. Save your changes
+   1. Replace the two input parameters in the `translateTerm` method with the class you defined as input
+   2. Replace the return type (String) of the `translateTerm` method with the name of the class you defined as output
+   3. Near the top of the method, change the assignment of the `term` and `lang` variables to get their values by calling the appropriate getter methods in the class you defined as input
+   4. At the end of the method, create an instance of the `TranslationActivityOutput` class, passing in the result of the `StringBuilder` as a parameter, which holds the translation returned in the microservice call
+   5. Return the object of the `TranslationActivityOutput` class created in the previous step
+   6. Save your changes
 
 
 ## Part C: Update the Workflow Code
 You've now updated the Activity code to use the classes. The next step is to update the Workflow code to use these classes where it passes input to the Activity and access its return value.
 
 1. Edit the `TranslationWorkflow.java` file
-   1. Update the method header to take a single input of type TranslationWorkflowInput as a parameter and return TranslationWorkflowOutput
+   1. Update the method declaration to take a single input of type TranslationWorkflowInput as a parameter and to return a value of type TranslationWorkflowOutput
 2. Edit the `TranslationWorkflowImpl.java` file
-   1. Create an instance of the `TranslationWorkflowInput` class to pass in to your Activity, populating it with the two fields (term and language code)
-   2. Update the call to `activities.TranslateTerm` to pass in the correct input (your new class `TranslationWorkflowInput`)
-   3. Update the `helloMessage` variable so that it takes the proper output type(your new class `TranslationWorkflowOutput`)
-   4. Update the `helloResult` variable to retrieve the output from the `helloMessage` variable using the appropriate getter method
-   5. Repeat the previous four steps for the second call to `activities.TranslateTerm`, which translates "Goodbye" 
+   1. Update the method to take a single input of type TranslationWorkflowInput as a parameter and to return a value of type TranslationWorkflowOutput
+   2. Create an instance of the `TranslationWorkflowInput` class to pass in to your Activity, populating it with the two fields (term and language code)
+   3. Update the type of the `helloResult` variable to use your Activity's output class instead of `String`
+   4. Update the call to `activities.TranslateTerm` to pass in the correct input (the object you created in the preceding statement)
+   5. Update the `helloResult` variable assignment to use the `TranslationActivityOutput` object returned by the Activity
+   4. Update the `helloMessage` variable so that it retrieves the translation from the object returned by the Activity
+   6. Repeat the previous four steps for the second call to `activities.TranslateTerm`, which translates "goodbye" 
 7. Save your changes
 
 

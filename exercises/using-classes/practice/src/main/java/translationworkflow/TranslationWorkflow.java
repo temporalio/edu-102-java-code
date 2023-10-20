@@ -9,9 +9,9 @@ import translationworkflow.model.TranslationWorkflowOutput;
 public interface TranslationWorkflow {
 
   @WorkflowMethod
-  // TODO: Update the method header to take a single input
-  // of type TranslationWorkflowInput as a parameter and
-  // return TranslationWorkflowOutput
+  // TODO: Update the method declaration to take a single parameter
+  // of type TranslationWorkflowInput as input and to return an 
+  // object of type TranslationWorkflowOutput as output
   String sayHelloGoodbye(String term, String languageCode);
 
 }
