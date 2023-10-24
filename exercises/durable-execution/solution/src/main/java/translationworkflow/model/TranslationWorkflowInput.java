@@ -5,7 +5,6 @@ public class TranslationWorkflowInput {
   private String languageCode;
 
   public TranslationWorkflowInput() {
-
   }
 
   public TranslationWorkflowInput(String name, String languageCode) {
