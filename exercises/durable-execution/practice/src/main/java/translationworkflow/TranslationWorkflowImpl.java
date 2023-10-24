@@ -7,17 +7,16 @@ import translationworkflow.model.TranslationActivityOutput;
 import translationworkflow.model.TranslationWorkflowInput;
 import translationworkflow.model.TranslationWorkflowOutput;
 import org.slf4j.Logger;
-
-// TODO: Part 3 - Add the Duration import here
-
 import java.time.Duration;
 
 public class TranslationWorkflowImpl implements TranslationWorkflow {
 
   // TODO: Define the Workflow logger
 
-  ActivityOptions options =
-      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5)).build();
+  private final ActivityOptions options =
+      ActivityOptions.newBuilder()
+          .setStartToCloseTimeout(Duration.ofSeconds(5))
+          .build();
 
   private final TranslationActivities activities =
       Workflow.newActivityStub(TranslationActivities.class, options);
@@ -39,8 +38,9 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
     // Wait a little while before saying goodbye
     // TODO: Part C - Add a log statement at the info level stating "Sleeping between translation
     // calls"
-    // TODO: Part C - Use Workflos.sleep to create a timer here for 30s
-
+    // TODO: Part C - Use Workflow.sleep to create a timer here for 30s
+    
+    
     // TODO: Add a log statement here at the debug level stating that the Activity has been invoked
     // Be sure to include variable information
     TranslationActivityInput goodbyeInput = new TranslationActivityInput("goodbye", languageCode);

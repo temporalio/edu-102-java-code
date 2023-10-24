@@ -1,11 +1,11 @@
 package translationworkflow.model;
 
 public class TranslationActivityInput {
+
   private String term;
   private String languageCode;
 
   public TranslationActivityInput() {
-
   }
 
   public TranslationActivityInput(String term, String languageCode) {
@@ -28,5 +28,4 @@ public class TranslationActivityInput {
   public void setLanguageCode(String languageCode) {
     this.languageCode = languageCode;
   }
-
 }

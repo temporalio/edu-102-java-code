@@ -55,11 +55,10 @@ environment**
 ## Part C: Add a Timer to the Workflow
 You will now add a Timer between the two Activity calls in the Workflow Definition, which will make it easier to observe durable execution in the next section.
 
-1. Add the import for Duration `import java.time.Duration;` which is used by the timer
-2. After the statement where `helloMessage` is defined, but before the statement where
+1. After the statement where `helloMessage` is defined, but before the statement where
    `goodbyeInput` is defined, add a new statement that logs the message `Sleeping between 
     translation calls` at the info level.
-3. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(30))` to set a Timer for 30 seconds
+2. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(30))` to set a Timer for 30 seconds
 
 
 ## Part D: Observe Durable Execution

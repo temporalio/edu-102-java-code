@@ -13,8 +13,10 @@ public class Starter {
 
     WorkflowClient client = WorkflowClient.newInstance(service);
 
-    WorkflowOptions options = WorkflowOptions.newBuilder().setWorkflowId("translation-workflow")
-        .setTaskQueue("translation-tasks").build();
+    WorkflowOptions options = WorkflowOptions.newBuilder()
+        .setWorkflowId("translation-workflow")
+        .setTaskQueue("translation-tasks")
+        .build();
 
     TranslationWorkflow workflow = client.newWorkflowStub(TranslationWorkflow.class, options);
 
