@@ -64,9 +64,10 @@ You will now add a Timer between the two Activity calls in the Workflow Definiti
 ## Part D: Observe Durable Execution
 It is typical to run Temporal applications using two or more Worker processes. Not only do additional Workers allow the application to scale, it also increases availability since another Worker can take over if a Worker crashes during Workflow Execution. You'll see this for yourself now and will learn more about how Temporal achieves this as you continue through the course.
 
-Before proceeding, make sure that there are no Workers running for this or any previous exercise. Also, please read through all of these instructions before you begin, so that you'll know when and how to react.
+Before proceeding, make sure that there are no Workers running for this or any previous exercise. Also, please read through all of these instructions before you begin, so that you'll know when and how to react. 
 
-1. In one terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
+1. Open a terminal, change to the `practice` subdirectory for this exercise, and run `mvn compile` to compile the code.
+2. In the same terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
 3. In another terminal, start a second Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
 4. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Stanislav sk"` (replace `Stanislav` with your first name) 
 5. Observe the output in the terminal windows used by each worker. 
