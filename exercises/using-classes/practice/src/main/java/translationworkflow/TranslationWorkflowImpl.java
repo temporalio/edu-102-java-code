@@ -20,8 +20,6 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
       Workflow.newActivityStub(TranslationActivities.class, options);
 
   @Override
-  // TODO Update the method to take a single input of type TranslationWorkflowInput 
-  // as a parameter and to return a value of type TranslationWorkflowOutput
   public TranslationWorkflowOutput sayHelloGoodbye(TranslationWorkflowInput input) {
     String name = input.getName();
     String languageCode = input.getLanguageCode();
