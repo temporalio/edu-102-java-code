@@ -39,7 +39,7 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
     logger.info("Sleeping between translation calls");
     Workflow.sleep(Duration.ofSeconds(30));
 
-    logger.debug("Preparing to translate Goodbye into languageCode: {}", languageCode);
+    logger.debug("Preparing to translate goodbye into languageCode: {}", languageCode);
     TranslationActivityInput goodbyeInput = new TranslationActivityInput("goodbye", languageCode);
     TranslationActivityOutput goodbyeResult = activities.translateTerm(goodbyeInput);
     String goodbyeMessage = goodbyeResult.getTranslation() + ", " + name;
