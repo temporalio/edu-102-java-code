@@ -69,7 +69,7 @@ public class PizzaWorkflowTest {
       throws InvalidChargeAmountException, OutOfServiceAreaException {
 
     PizzaOrder order = createPizzaOrderForTest();
-    
+
     PizzaActivities mockedActivities =
         mock(PizzaActivities.class, withSettings().withoutAnnotations());
 
