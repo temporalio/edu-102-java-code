@@ -8,12 +8,10 @@ import pizzaworkflow.model.PizzaOrder;
 import pizzaworkflow.model.Pizza;
 import pizzaworkflow.model.Customer;
 import pizzaworkflow.model.OrderConfirmation;
-import pizzaworkflow.model.Distance;
 import pizzaworkflow.model.Address;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 
 public class Starter {
   public static void main(String[] args) throws Exception {
@@ -26,8 +24,10 @@ public class Starter {
 
     String workflowID = String.format("pizza-workflow-order-%s", order.getOrderNumber());
 
-    WorkflowOptions options = WorkflowOptions.newBuilder().setWorkflowId(workflowID)
-        .setTaskQueue(Constants.TASK_QUEUE_NAME).build();
+    WorkflowOptions options = WorkflowOptions.newBuilder()
+        .setWorkflowId(workflowID)
+        .setTaskQueue(Constants.TASK_QUEUE_NAME)
+        .build();
 
     PizzaWorkflow workflow = client.newWorkflowStub(PizzaWorkflow.class, options);
 
@@ -43,15 +43,13 @@ public class Starter {
         new Address("742 Evergreen Terrace", "Apartment 221B", "Albuquerque", "NM", "87101");
     Pizza pizza1 = new Pizza("Large, with mushrooms and onions", 1500);
     Pizza pizza2 = new Pizza("Small, with pepperoni", 1200);
-    // TODO: Add a new pizza object here
+    // TODO: Create a new pizza object here
 
-    List<Pizza> orderList = new ArrayList<Pizza>(Arrays.asList(pizza1, pizza2)); // TODO: Add the
-                                                                                 // pizza to the
-                                                                                 // list
+    // TODO: Add the new pizza object to the list so it will be included in the order
+    List<Pizza> orderList = Arrays.asList(pizza1, pizza2); 
 
     PizzaOrder order = new PizzaOrder("XD001", customer, orderList, true, address);
 
     return order;
-
   }
 }
