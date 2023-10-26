@@ -48,7 +48,7 @@ environment**
    2. Include the term being translated and the language code 
 4. Optionally, add log statements at the Error level anywhere that the Activity throws an exception
 5. Near the bottom of the method, use the Debug level to log the successful translation
-	1. Include the translated term
+   1. Include the translated term
 6. Save your changes
 
 
