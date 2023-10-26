@@ -127,7 +127,7 @@ If you have time and would like an additional challenge,
 continue with the following steps.
 
 1. Make a copy of the existing Workflow Test by running 
-   `cp TranslationWorkflowTest.java TranslationWorkflowMockTest.java`
+   `cp src/test/java/translationworkflow/TranslationWorkflowTest.java src/test/java/translationworkflow/TranslationWorkflowMockTest.java`
 2. Edit the `TranslationWorkflowMockTest.java` file
 3. Add an import `import static org.mockito.Mockito.*;`
 4. Rename the test function to `testSuccessfulTranslationWithMocks`
