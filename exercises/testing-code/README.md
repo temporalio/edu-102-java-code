@@ -21,7 +21,7 @@ skip this step. An instance of the Microservice is already running in your
 environment**
 
 1. Navigate to the `utilities` directory at the root level of the course
-2. Change directoryies into the `microservice directory`
+2. Change into the `microservice` directory
    1. `cd utilities/microservice`
 3. Compile the microservice
    1. `mvn clean compile`
