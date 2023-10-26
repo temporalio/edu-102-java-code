@@ -17,18 +17,22 @@ import static org.mockito.Mockito.*;
 public class TranslationWorkflowMockTest {
 
   @RegisterExtension
-  public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension
-      .newBuilder().setWorkflowTypes(TranslationWorkflowImpl.class).setDoNotStart(true).build();
+  public static final TestWorkflowExtension testWorkflowExtension = 
+      TestWorkflowExtension.newBuilder()
+          .setWorkflowTypes(TranslationWorkflowImpl.class)
+          .setDoNotStart(true).build();
 
   @Test
   public void testSuccessfulTranslationWithMocks(TestWorkflowEnvironment testEnv, Worker worker,
       TranslationWorkflow workflow) {
+
     TranslationActivities mockedActivities =
         mock(TranslationActivities.class, withSettings().withoutAnnotations());
     when(mockedActivities.translateTerm(new TranslationActivityInput("hello", "fr")))
         .thenReturn(new TranslationActivityOutput("Bonjour"));
     when(mockedActivities.translateTerm(new TranslationActivityInput("goodbye", "fr")))
         .thenReturn(new TranslationActivityOutput("Au revoir"));
+    
     worker.registerActivitiesImplementations(mockedActivities);
     testEnv.start();
 
