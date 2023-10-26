@@ -8,12 +8,10 @@ import pizzaworkflow.model.PizzaOrder;
 import pizzaworkflow.model.Pizza;
 import pizzaworkflow.model.Customer;
 import pizzaworkflow.model.OrderConfirmation;
-import pizzaworkflow.model.Distance;
 import pizzaworkflow.model.Address;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 
 public class Starter {
   public static void main(String[] args) throws Exception {
@@ -26,8 +24,10 @@ public class Starter {
 
     String workflowID = String.format("pizza-workflow-order-%s", order.getOrderNumber());
 
-    WorkflowOptions options = WorkflowOptions.newBuilder().setWorkflowId(workflowID)
-        .setTaskQueue(Constants.taskQueueName).build();
+    WorkflowOptions options = WorkflowOptions.newBuilder()
+        .setWorkflowId(workflowID)
+        .setTaskQueue(Constants.TASK_QUEUE_NAME)
+        .build();
 
     PizzaWorkflow workflow = client.newWorkflowStub(PizzaWorkflow.class, options);
 
@@ -45,11 +45,10 @@ public class Starter {
     Pizza pizza2 = new Pizza("Small, with pepperoni", 1200);
     Pizza pizza3 = new Pizza("Medium, with extra cheese", 1300);
 
-    List<Pizza> orderList = new ArrayList<Pizza>(Arrays.asList(pizza1, pizza2, pizza3));
+    List<Pizza> orderList = Arrays.asList(pizza1, pizza2, pizza3);
 
     PizzaOrder order = new PizzaOrder("XD001", customer, orderList, true, address);
 
     return order;
-
   }
 }
