@@ -62,7 +62,6 @@ public class PizzaActivitiesTest {
 
     assertEquals("PI314", confirmation.getOrderNumber());
     assertEquals(2600, confirmation.getAmount());
-
   }
 
   // TODO: Write the testSendBillAppliesDiscount Test

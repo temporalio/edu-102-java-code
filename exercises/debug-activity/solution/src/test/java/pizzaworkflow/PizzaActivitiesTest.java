@@ -62,7 +62,6 @@ public class PizzaActivitiesTest {
 
     assertEquals("PI314", confirmation.getOrderNumber());
     assertEquals(2600, confirmation.getAmount());
-
   }
 
   @Test
@@ -75,7 +74,6 @@ public class PizzaActivitiesTest {
 
     assertEquals("PI314", confirmation.getOrderNumber());
     assertEquals(6000, confirmation.getAmount());
-
   }
 
   @Test
