@@ -12,17 +12,10 @@ import io.temporal.failure.ActivityFailure;
 import io.temporal.testing.TestActivityEnvironment;
 
 import pizzaworkflow.exceptions.InvalidChargeAmountException;
-import pizzaworkflow.exceptions.OutOfServiceAreaException;
 import pizzaworkflow.model.Address;
 import pizzaworkflow.model.Bill;
-import pizzaworkflow.model.Customer;
 import pizzaworkflow.model.Distance;
 import pizzaworkflow.model.OrderConfirmation;
-import pizzaworkflow.model.Pizza;
-import pizzaworkflow.model.PizzaOrder;
-
-import pizzaworkflow.PizzaActivities;
-import pizzaworkflow.PizzaActivitiesImpl;
 
 public class PizzaActivitiesTest {
 
@@ -78,7 +71,7 @@ public class PizzaActivitiesTest {
   public void testSendBillFailsWithNegativeAmount() throws InvalidChargeAmountException {
     testEnvironment.registerActivitiesImplementations(new PizzaActivitiesImpl());
     PizzaActivities activity = testEnvironment.newActivityStub(PizzaActivities.class);
-    Bill bill = new Bill(21974, "QU812", "1 large supreme pizzas", -1000);
+    Bill bill = new Bill(21974, "QU812", "1 large supreme pizza", -1000);
 
     // Assert that an error was thrown and it was an Activity Failure
     Exception exception = assertThrows(ActivityFailure.class, () -> {
