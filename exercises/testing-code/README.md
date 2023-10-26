@@ -129,20 +129,21 @@ continue with the following steps.
 1. Make a copy of the existing Workflow Test by running 
    `cp src/test/java/translationworkflow/TranslationWorkflowTest.java src/test/java/translationworkflow/TranslationWorkflowMockTest.java`
 2. Edit the `TranslationWorkflowMockTest.java` file
-3. Add an import `import static org.mockito.Mockito.*;`
-4. Rename the test function to `testSuccessfulTranslationWithMocks`
-5. Add the following code to the beginning of the `testSuccessfulTranslationWithMocks` method
+3. Rename the class to `TranslationWorkflowMockTest`
+4. Add an import `import static org.mockito.Mockito.*;`
+5. Rename the test function to `testSuccessfulTranslationWithMocks`
+6. Add the following code to the beginning of the `testSuccessfulTranslationWithMocks` method
 ```java
 TranslationActivities mockedActivities = mock(TranslationActivities.class, withSettings().withoutAnnotations());
 when(mockedActivities.translateTerm(new TranslationActivityInput("hello", "fr")))
    .thenReturn(new TranslationActivityOutput("Bonjour"));
 ```
-6. Copy the second line from the above code beginning with `when` and modify it 
+7. Copy the second line from the above code beginning with `when` and modify it 
 to mock the `translateTerm` Activity to return `Au revoir` when `goodbye` is passed
 with the `fr` language code specified.
-7. Modify the Worker registration line to use the new `mockedActivities` instance.
-8. Save your changes
-9. Add the following code at the bottom of the `TranslateActivityInput` class.
+8. Modify the Worker registration line to use the new `mockedActivities` instance.
+9. Save your changes
+10. Add the following code at the bottom of the `TranslateActivityInput` class.
     * Why is this necessary? If you ran the test now as written, it would fail. 
 	  This is because comparisons of the `TranslateActivityInput` objects (as 
 	  with all objects in Java) invoke its `equals` method. Because this class 
@@ -181,5 +182,5 @@ with the `fr` language code specified.
     return hash;
   } 
 ```
-10. Save your changes
-11. Run `mvn test` to run the tests
+11. Save your changes
+12. Run `mvn test` to run the tests
