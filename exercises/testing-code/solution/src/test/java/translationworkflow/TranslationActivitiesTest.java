@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import io.temporal.failure.ActivityFailure;
 import io.temporal.testing.TestActivityEnvironment;
-import translationworkflow.TranslationActivities;
-import translationworkflow.TranslationActivitiesImpl;
 import translationworkflow.model.TranslationActivityInput;
 import translationworkflow.model.TranslationActivityOutput;
 
