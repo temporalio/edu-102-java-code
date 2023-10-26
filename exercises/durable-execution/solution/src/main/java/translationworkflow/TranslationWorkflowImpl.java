@@ -7,7 +7,6 @@ import translationworkflow.model.TranslationActivityOutput;
 import translationworkflow.model.TranslationWorkflowInput;
 import translationworkflow.model.TranslationWorkflowOutput;
 import org.slf4j.Logger;
-
 import java.time.Duration;
 
 public class TranslationWorkflowImpl implements TranslationWorkflow {
