@@ -1,9 +1,11 @@
 package pizzaworkflow.model;
 
 public class Distance {
+  
   private int kilometers;
 
-  public Distance() {}
+  public Distance() {
+  }
 
   public Distance(int kilometers) {
     this.kilometers = kilometers;

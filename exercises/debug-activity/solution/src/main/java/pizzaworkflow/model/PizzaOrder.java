@@ -3,6 +3,7 @@ package pizzaworkflow.model;
 import java.util.List;
 
 public class PizzaOrder {
+
   private String orderNumber;
   private Customer customer;
   private List<Pizza> items;
@@ -13,6 +14,7 @@ public class PizzaOrder {
 
   public PizzaOrder(String orderNumber, Customer customer, List<Pizza> items, boolean isDelivery,
       Address address) {
+
     this.orderNumber = orderNumber;
     this.customer = customer;
     this.items = items;
