@@ -140,25 +140,46 @@ when(mockedActivities.translateTerm(new TranslationActivityInput("hello", "fr"))
 6. Copy the second line from the above code beginning with `when` and modify it 
 to mock the `translateTerm` Activity to return `Au revoir` when `goodbye` is passed
 with the `fr` language code specified.
-7. Modify the worker registration line to use the new `mockedActivities` instance.
+7. Modify the Worker registration line to use the new `mockedActivities` instance.
 8. Save your changes
-9. If you ran the test now as written it would fail. This is because when Java
-does a comparison of the `TranslateActivityInput` objects it compares the object
-references, not values. To solve this, override the `equals` method in `TranlationActivityInput`
-by adding the following code at the bottom.
+9. Add the following code at the bottom of the `TranslateActivityInput` class.
+    * Why is this necessary? If you ran the test now as written, it would fail. 
+	  This is because comparisons of the `TranslateActivityInput` objects (as 
+	  with all objects in Java) invoke its `equals` method. Because this class 
+	  does not override that method, it inherits the behavior of its parent 
+	  (in this case, `java.lang.Object`, which compares the identity of the 
+      objects. To solve this, you must override the method to compare the 
+      the equality of the `term` and `languageCode` fields. Since you are 
+	  overriding the `equals` method, it is also standard Java practice to 
+	  override the `hashCode` method to ensure that two equal objects will 
+	  return identical hash codes.
+
 ```java
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        TranslationActivityInput other = (TranslationActivityInput) o;
-        return this.term.equals(other.term) &&
-                this.languageCode.equals(other.languageCode);
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final TranslationActivityInput other = (TranslationActivityInput) obj;
+    if (!Objects.equals(this.term, other.term)) {
+      return false;
+    }
+    return Objects.equals(this.languageCode, other.languageCode);
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 3;
+    hash = 53 * hash + Objects.hashCode(this.term);
+    hash = 53 * hash + Objects.hashCode(this.languageCode);
+    return hash;
+  } 
 ```
-Typically when you override this method you would also override the `hashCode`
-method. For the sake of brevity it has been excluded here.
 10. Save your changes
-9. Run `mvn test` to run the tests
+11. Run `mvn test` to run the tests
