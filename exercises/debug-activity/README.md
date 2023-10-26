@@ -134,8 +134,6 @@ layout.
    and then make the following changes to it:
    * Change the `description` to `5 large cheese pizzas`
    * Change the `amount` to `6500` ($65)
-   * Change the comment next to the `amount` field to say 
-     `amount qualifies for discount`
    * Change the expected price in the `assertEquals` statement to `6000`, 
      which is the $65 amount minus the $5 discount.
 4. Save the changes and close the editor
