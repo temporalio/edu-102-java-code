@@ -95,17 +95,19 @@ uses floating point numbers to represent currency.
 
 1. Edit the `Starter.java` file, which creates the input data and starts 
    the Workflow
-   * Lines 42-56 create and populate Pizza class instances (`pizza1` and `pizza2`) representing 
-   pizzas, which are then added to an ArrayList named `items` used in the 
-   `PizzaOrder` class used as input to the Workflow. 
-3. Create and populate another Pizza class instance, named `pizza3`, representing a third
-   pizza added to the order. It should have the following values:
+   * Code in the `createPizzaOrder` method creates and populates two 
+     Pizza objects (`pizza1` and `pizza2`) and adds them to a list, 
+	 which represents the order and is used as input to the Workflow.
+2. Create and populate another Pizza object named `pizza3`, which 
+   represents a third pizza added to the order. It should have the 
+   following values:
    * Description: "Medium, with extra cheese"
-	* Price: 1300
-4. Add `pizza3` to the `items` ArrayList
-5. Save the changes and close the editor
-6. Compile your changes with `mvn clean compile`
-7. Submit this pizza order by starting the Workflow: `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"`
+   * Price: 1300
+3. Add `pizza3` to the order list
+4. Save the changes and close the editor
+5. Compile your changes with `mvn clean compile`
+6. Submit this pizza order by starting the Workflow: 
+   `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"`
 
 Although the Workflow *should* complete within a few seconds, you will 
 probably find that it never does, so open the Web UI and look at the 
