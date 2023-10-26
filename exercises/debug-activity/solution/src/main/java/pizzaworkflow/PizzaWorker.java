@@ -12,7 +12,7 @@ public class PizzaWorker {
     WorkflowClient client = WorkflowClient.newInstance(service);
     WorkerFactory factory = WorkerFactory.newInstance(client);
 
-    Worker worker = factory.newWorker(Constants.taskQueueName);
+    Worker worker = factory.newWorker(Constants.TASK_QUEUE_NAME);
 
     worker.registerWorkflowImplementationTypes(PizzaWorkflowImpl.class);
 
