@@ -29,8 +29,6 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
     // TODO: Add a log statement at the info level stating that the Workflow has been invoked
     // Be sure to include variable information
 
-    // TODO: Add a log statement at the debug level stating that the Activity has been invoked
-    // Be sure to include variable information
     TranslationActivityInput helloInput = new TranslationActivityInput("hello", languageCode);
     TranslationActivityOutput helloResult = activities.translateTerm(helloInput);
     String helloMessage = helloResult.getTranslation() + ", " + name;
