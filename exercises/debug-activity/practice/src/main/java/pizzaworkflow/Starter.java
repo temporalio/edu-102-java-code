@@ -27,7 +27,7 @@ public class Starter {
     String workflowID = String.format("pizza-workflow-order-%s", order.getOrderNumber());
 
     WorkflowOptions options = WorkflowOptions.newBuilder().setWorkflowId(workflowID)
-        .setTaskQueue(Constants.taskQueueName).build();
+        .setTaskQueue(Constants.TASK_QUEUE_NAME).build();
 
     PizzaWorkflow workflow = client.newWorkflowStub(PizzaWorkflow.class, options);
 
