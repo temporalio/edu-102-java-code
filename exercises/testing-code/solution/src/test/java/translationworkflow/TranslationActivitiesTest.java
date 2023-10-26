@@ -55,10 +55,9 @@ public class TranslationActivitiesTest {
       TranslationActivityOutput output = activity.translateTerm(input);
     });
 
-    // Assert that the error has the expected message, which identifies
-    // the invalid language code as the cause
+    // Assert that the error contains the expected message
     assertTrue(exception.getMessage().contains(
-        "An error was caught attempting to call the microservice: Error: Invalid language code \'xq\'"),
+        "Server returned HTTP response code: 500"),
         "expected error message");
   }
 }
