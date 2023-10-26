@@ -1,6 +1,7 @@
 package pizzaworkflow.exceptions;
 
 public class OutOfServiceAreaException extends Exception {
+
   public OutOfServiceAreaException() {
     super();
   }

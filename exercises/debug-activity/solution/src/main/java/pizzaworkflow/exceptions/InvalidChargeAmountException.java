@@ -1,6 +1,7 @@
 package pizzaworkflow.exceptions;
 
 public class InvalidChargeAmountException extends Exception {
+
   public InvalidChargeAmountException() {
     super();
   }
