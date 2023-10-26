@@ -75,10 +75,9 @@ public void testFailedTranslateActivityBadLanguageCode() {
 
    // Assert that the error has the expected message, which identifies
    // the invalid language code as the cause
-   assertTrue(
-            exception.getMessage().contains(
-                  "An error was caught attempting to call the microservice: Error: Invalid language code \'xq\'"),
-            "expected error message");
+   assertTrue(exception.getMessage().contains(
+       "Server returned HTTP response code: 500"), 
+       "expected error message");
 }
 ```
 
@@ -96,7 +95,7 @@ following steps:
 ## Part D: Test a Workflow Definition
 
 1. Edit the `TranslationWorkflowTest.java` file in the
-`src/main/test/java/translationworkflow` directory
+`src/test/java/translationworkflow` directory
 4. Add assertions for the following conditions to the `testSuccessfulTranslation` test
    * The `helloMessage` field in the result is `Bonjour, Pierre`
    * The `goodbyeMessage` field in the result is `Au revoir, Pierre`
