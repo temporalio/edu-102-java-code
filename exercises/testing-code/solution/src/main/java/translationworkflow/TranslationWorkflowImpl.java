@@ -14,8 +14,10 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
 
   public static final Logger logger = Workflow.getLogger(TranslationWorkflowImpl.class);
 
-  ActivityOptions options =
-      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5)).build();
+  private final ActivityOptions options =
+      ActivityOptions.newBuilder()
+          .setStartToCloseTimeout(Duration.ofSeconds(5))
+          .build();
 
   private final TranslationActivities activities =
       Workflow.newActivityStub(TranslationActivities.class, options);
