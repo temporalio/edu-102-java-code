@@ -78,7 +78,7 @@ returns the appropriate error when called with an invalid language code.
      assertTrue(exception.getMessage().contains(
          "Server returned HTTP response code: 500"), 
          "expected error message");
-}
+  }
 ```
 
 Take a moment to study this code, and then continue with the 
