@@ -1,16 +1,19 @@
 package pizzaworkflow.model;
 
 public class OrderConfirmation {
+
   private String orderNumber;
   private String status;
   private String confirmationNumber;
   private long billingTimestamp;
   private int amount;
 
-  public OrderConfirmation() {}
+  public OrderConfirmation() {
+  }
 
   public OrderConfirmation(String orderNumber, String status, String confirmationNumber,
       long billingTimestamp, int amount) {
+
     this.orderNumber = orderNumber;
     this.status = status;
     this.confirmationNumber = confirmationNumber;

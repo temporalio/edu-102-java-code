@@ -1,12 +1,14 @@
 package pizzaworkflow.model;
 
 public class Bill {
+
   private int customerID;
   private String orderNumber;
   private String description;
   private int amount;
 
-  public Bill() {}
+  public Bill() {
+  }
 
   public Bill(int customerID, String orderNumber, String description, int amount) {
     this.customerID = customerID;

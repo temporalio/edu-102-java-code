@@ -4,7 +4,8 @@ public class Pizza {
   private String description;
   private int price;
 
-  public Pizza() {}
+  public Pizza() {
+  }
 
   public Pizza(String description, int price) {
     this.description = description;
