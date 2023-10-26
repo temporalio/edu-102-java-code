@@ -20,7 +20,8 @@ public class TranslationWorkflowMockTest {
   public static final TestWorkflowExtension testWorkflowExtension = 
       TestWorkflowExtension.newBuilder()
           .setWorkflowTypes(TranslationWorkflowImpl.class)
-          .setDoNotStart(true).build();
+          .setDoNotStart(true)
+          .build();
 
   @Test
   public void testSuccessfulTranslationWithMocks(TestWorkflowEnvironment testEnv, Worker worker,
