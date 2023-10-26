@@ -2,6 +2,6 @@ package pizzaworkflow;
 
 public class Constants {
 
-  public static final String taskQueueName = "pizza-tasks";
+  public static final String TASK_QUEUE_NAME = "pizza-tasks";
 
 }
