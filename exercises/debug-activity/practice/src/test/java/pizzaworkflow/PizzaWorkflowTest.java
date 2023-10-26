@@ -1,10 +1,6 @@
 package pizzaworkflow;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.beans.Transient;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +14,6 @@ import io.temporal.testing.TestWorkflowEnvironment;
 import io.temporal.testing.TestWorkflowExtension;
 import io.temporal.worker.Worker;
 import io.temporal.client.WorkflowFailedException;
-import io.temporal.worker.WorkflowImplementationOptions;
 
 import pizzaworkflow.exceptions.InvalidChargeAmountException;
 import pizzaworkflow.exceptions.OutOfServiceAreaException;
@@ -30,16 +25,17 @@ import pizzaworkflow.model.OrderConfirmation;
 import pizzaworkflow.model.Pizza;
 import pizzaworkflow.model.PizzaOrder;
 
-import java.lang.Exception;
-
 import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
 
 public class PizzaWorkflowTest {
 
   @RegisterExtension
-  public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension
-      .newBuilder().setWorkflowTypes(PizzaWorkflowImpl.class).setDoNotStart(true).build();
+  public static final TestWorkflowExtension testWorkflowExtension = 
+      TestWorkflowExtension.newBuilder()
+          .setWorkflowTypes(PizzaWorkflowImpl.class)
+          .setDoNotStart(true)
+          .build();
 
   @Test
   public void testSuccessfulPizzaOrder(TestWorkflowEnvironment testEnv, Worker worker,
@@ -65,7 +61,6 @@ public class PizzaWorkflowTest {
     assertEquals("P24601", result.getConfirmationNumber());
     assertEquals(2500, result.getAmount());
     assertNotEquals("", result.getBillingTimestamp());
-
   }
 
   @Test
@@ -74,9 +69,7 @@ public class PizzaWorkflowTest {
       throws InvalidChargeAmountException, OutOfServiceAreaException {
 
     PizzaOrder order = createPizzaOrderForTest();
-    OrderConfirmation confirmation = new OrderConfirmation(order.getOrderNumber(), "SUCCESS",
-        "AB9923", Instant.now().getEpochSecond(), 2500);
-
+    
     PizzaActivities mockedActivities =
         mock(PizzaActivities.class, withSettings().withoutAnnotations());
 
@@ -101,11 +94,10 @@ public class PizzaWorkflowTest {
     Pizza pizza1 = new Pizza("Large, with pepperoni", 1500);
     Pizza pizza2 = new Pizza("Small, with mushrooms and onions", 1000);
 
-    List<Pizza> orderList = new ArrayList<Pizza>(Arrays.asList(pizza1, pizza2));
+    List<Pizza> orderList = Arrays.asList(pizza1, pizza2);
 
     PizzaOrder order = new PizzaOrder("XD001", customer, orderList, true, address);
 
     return order;
-
   }
 }
