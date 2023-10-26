@@ -128,7 +128,7 @@ layout.
      discount did not write a test case for it. 
      Deploying the untested code is what led to this failure, but 
      writing a test now will help you to verify the fix. 
-2. Open the `activity_test.go` file in the editor
+2. Open the `PizzaActivitiesTest.java` file in the editor
 3. Add a new test by copying the existing `testSendBillTypicalOrder`
    function and renaming the new function as `testSendBillAppliesDiscount`, 
    and then make the following changes to it:
