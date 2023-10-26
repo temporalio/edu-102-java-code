@@ -138,8 +138,8 @@ layout.
      which is the $65 amount minus the $5 discount.
 4. Save the changes and close the editor
 5. Run `mvn test`. Since you have not yet fixed the bug, the test will fail.
-6. Open the `PizzaActivities.java` file in the editor and find where the `sendBill` 
-   Activity is defined.
+6. Open the `PizzaActivitiesImpl.java` file in the editor and find where 
+   the `sendBill` Activity is defined.
 7. Examine the code where the discount is applied. Once you spot the bug, 
    fix it. 
 8. Save your changes and close the editor
