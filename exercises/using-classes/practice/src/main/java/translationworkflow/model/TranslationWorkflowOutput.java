@@ -28,6 +28,7 @@ public class TranslationWorkflowOutput {
     this.goodbyeMessage = goodbyeMessage;
   }
 
+  @Override
   public String toString() {
     return this.helloMessage + "\n" + this.goodbyeMessage;
   }
