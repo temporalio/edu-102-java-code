@@ -62,22 +62,22 @@ unexpected input. The example below does this, testing that the Activity
 returns the appropriate error when called with an invalid language code. 
 
 ```java
-@Test
-public void testFailedTranslateActivityBadLanguageCode() {
-   testEnvironment.registerActivitiesImplementations(new TranslationActivitiesImpl());
-   TranslationActivities activity = testEnvironment.newActivityStub(TranslationActivities.class);
-   TranslationActivityInput input = new TranslationActivityInput("goodbye", "xq");
+  @Test
+  public void testFailedTranslateActivityBadLanguageCode() {
+     testEnvironment.registerActivitiesImplementations(new TranslationActivitiesImpl());
+     TranslationActivities activity = testEnvironment.newActivityStub(TranslationActivities.class);
+     TranslationActivityInput input = new TranslationActivityInput("goodbye", "xq");
 
-   // Assert that an error was thrown and it was an Activity Failure
-   Exception exception = assertThrows(ActivityFailure.class, () -> {
-      TranslationActivityOutput output = activity.translateTerm(input);
-   });
+     // Assert that an error was thrown and it was an Activity Failure
+     Exception exception = assertThrows(ActivityFailure.class, () -> {
+        TranslationActivityOutput output = activity.translateTerm(input);
+     });
 
-   // Assert that the error has the expected message, which identifies
-   // the invalid language code as the cause
-   assertTrue(exception.getMessage().contains(
-       "Server returned HTTP response code: 500"), 
-       "expected error message");
+     // Assert that the error has the expected message, which identifies
+     // the invalid language code as the cause
+     assertTrue(exception.getMessage().contains(
+         "Server returned HTTP response code: 500"), 
+         "expected error message");
 }
 ```
 
