@@ -34,7 +34,7 @@ We have provided a unit test for the `translateTerm` Activity
 to get you started. This test verifies that the Activity correctly 
 translates the term "Hello" to German. Take a moment to study the 
 test, which you'll find in the `TranslationActivitiesTest.java` file in the
-`src/main/test/java/translationworkflow` directory. Since the test runs the 
+`src/test/java/translationworkflow` directory. Since the test runs the 
 Activity, which in turn calls the microservice to do the translation, ensure
 that your microservice is running as state above. Then run the test.
 
