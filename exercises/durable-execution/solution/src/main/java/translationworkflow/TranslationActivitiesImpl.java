@@ -40,7 +40,7 @@ public class TranslationActivitiesImpl implements TranslationActivities {
               URLEncoder.encode(lang, "UTF-8")))
           .toURL();
     } catch (IOException e) {
-      logger.error(e.getMessage(), IOException.class.getName());
+      logger.error(e.getMessage());
       throw Activity.wrap(e);
     }
 

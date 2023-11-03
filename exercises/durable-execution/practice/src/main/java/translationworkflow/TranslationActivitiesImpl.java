@@ -19,7 +19,7 @@ import translationworkflow.model.TranslationActivityOutput;
 
 public class TranslationActivitiesImpl implements TranslationActivities {
 
-  private static final Logger logger = LoggerFactory.getLogger(TranslationActivitiesImpl.class);
+  // TODO: Define a logger for your Activities here
 
   @Override
   public TranslationActivityOutput translateTerm(TranslationActivityInput input) {
