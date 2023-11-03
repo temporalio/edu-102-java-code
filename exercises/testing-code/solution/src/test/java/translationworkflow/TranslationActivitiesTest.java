@@ -55,7 +55,7 @@ public class TranslationActivitiesTest {
 
     // Assert that the error contains the expected message
     assertTrue(exception.getMessage().contains(
-        "Server returned HTTP response code: 500"),
+        "Invalid language code"),
         "expected error message");
   }
 }

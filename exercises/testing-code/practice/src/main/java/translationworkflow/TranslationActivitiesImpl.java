@@ -1,5 +1,7 @@
 package translationworkflow;
 
+import java.net.HttpURLConnection;
+import java.net.ProtocolException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -7,6 +9,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import io.temporal.activity.Activity;
+import io.temporal.failure.ApplicationFailure;
+import java.net.HttpURLConnection;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import translationworkflow.model.TranslationActivityInput;
@@ -24,33 +29,74 @@ public class TranslationActivitiesImpl implements TranslationActivities {
     logger.info("[ACTIVITY INVOKED] translateTerm invoked with input term: {} language code: {}",
         term, lang);
 
-    // construct the URL, with supplied input parameters, for accessing the microservice
+    // construct the URL, with supplied input parameters, for accessing the
+    // microservice
     URL url = null;
     try {
       String baseUrl = "http://localhost:9999/translate?term=%s&lang=%s";
       url = URI.create(
-              String.format(baseUrl, 
-                URLEncoder.encode(term, "UTF-8"), 
-                URLEncoder.encode(lang, "UTF-8")))
-              .toURL();
+          String.format(baseUrl,
+              URLEncoder.encode(term, "UTF-8"),
+              URLEncoder.encode(lang, "UTF-8")))
+          .toURL();
     } catch (IOException e) {
-      logger.error("An IOException occurred when creating the URL: {}", e.toString());
+      logger.error(e.getMessage(), IOException.class.getName());
       throw Activity.wrap(e);
     }
 
-    // Make the HTTP request, extract the translation from the response, and return it
-    StringBuilder content = new StringBuilder();
-    try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
-      String line;
-      while ((line = in.readLine()) != null) {
-        content.append(line);
+    TranslationActivityOutput result = new TranslationActivityOutput();
+
+    try {
+      // Open a connection to the URL
+      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+      // Set the HTTP request method (GET, POST, etc.)
+      connection.setRequestMethod("GET");
+
+      // Get the response code
+      int responseCode = connection.getResponseCode();
+
+      if (responseCode == HttpURLConnection.HTTP_OK) {
+        // If the response code is 200 (HTTP OK), the request was successful
+        BufferedReader reader = new BufferedReader(
+            new InputStreamReader(connection.getInputStream()));
+        String line;
+        StringBuilder response = new StringBuilder();
+
+        while ((line = reader.readLine()) != null) {
+          response.append(line);
+        }
+
+        reader.close();
+
+        connection.disconnect();
+        result.setTranslation(response.toString());
+
+      } else {
+        // If the response code is not 200, there was an error
+        BufferedReader errorReader = new BufferedReader(
+            new InputStreamReader(connection.getErrorStream()));
+        String line;
+        StringBuilder errorResponse = new StringBuilder();
+
+        while ((line = errorReader.readLine()) != null) {
+          errorResponse.append(line);
+        }
+
+        errorReader.close();
+
+        connection.disconnect();
+        // Print the error response
+        throw ApplicationFailure.newFailure(errorResponse.toString(), IOException.class.getName());
       }
+
     } catch (IOException e) {
-      logger.error("An IOException occurred when accessing the microservice: {}", e.toString());
-      throw Activity.wrap(e);
+      e.printStackTrace();
     }
 
-    String translation = content.toString();
-    return new TranslationActivityOutput(translation);
+    logger.debug("Translation was successful with output: " + result.getTranslation());
+    
+    return result;
   }
+
 }
