@@ -40,7 +40,7 @@ environment**
 
 ## Part B: Add Logging to the Activity Code
 
-1. Edit the `TranslationActivityImpl.java` file
+1. Edit the `TranslationActivitiesImpl.java` file
 2. Add an imports for `import org.slf4j.Logger;` and `import org.slf4j.LoggerFactory;` (this allows you to use the slf4j logger, since Activities don't require a specialized logger)
 3. Define an Activity logger at the top of the Activity class as an instance variable
 4. Replace the TODO in the `translateTerm` method to log a message at the Info level so you'll know when the Activity is invoked. 
