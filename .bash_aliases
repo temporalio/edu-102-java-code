@@ -18,7 +18,7 @@ alias ex2t="mvn test"
 alias ex3="cd ${GITPOD_REPO_ROOT}/exercises/debug-activity/practice"
 alias ex3s="cd ${GITPOD_REPO_ROOT}/exercises/debug-activity/solution"
 alias ex3w="mvn exec:java -Dexec.mainClass='pizzaworkflow.PizzaWorker'"
-alias ex3st="mvn exec:java -Dexec.mainClass='pizzaworkflow.Starter'
+alias ex3st="mvn exec:java -Dexec.mainClass='pizzaworkflow.Starter'"
 
 export PATH="$PATH:/workspace/bin"
 echo "temporal configured! try typing temporal -v"

@@ -42,15 +42,17 @@ the code.
 
 ## Part A: Add Logging to the Workflow Code
 
+1. Change directories to the `exercises/durable-execution/practice` directory
+   1. If you're using the GitPod environment, you can run `ex1`
 1. Edit the `TranslationWorkflowImpl.java` file
-2. Define a Workflow logger at the top of the Workflow function
-3. Replace the TODO in the `sayHelloGoodbye` method to log a message at the Info level
+1. Define a Workflow logger at the top of the Workflow function
+1. Replace the TODO in the `sayHelloGoodbye` method to log a message at the Info level
    1. It should mention that the Workflow function has been invoked
    2. It should also include the variables passed as input
-4. Before each call to Activity Methods, log a message at Debug level
+1. Before each call to Activity Methods, log a message at Debug level
    1. This should should identify the word being translated
    2. It should also include a the language code passed as input
-5. Save your changes
+1. Save your changes
 
 ## Part B: Add Logging to the Activity Code
 
@@ -71,7 +73,7 @@ You will now add a Timer between the two Activity calls in the Workflow Definiti
 
 1. After the statement where `helloMessage` is defined, but before the statement where
    `goodbyeInput` is defined, add a new statement that logs the message `Sleeping between 
- translation calls` at the info level.
+translation calls` at the info level.
 2. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(30))` to set a Timer for 30 seconds
 
 ## Part D: Observe Durable Execution
@@ -82,8 +84,11 @@ Before proceeding, make sure that there are no Workers running for this or any p
 
 1. Open a terminal, change to the `practice` subdirectory for this exercise, and run `mvn compile` to compile the code.
 2. In the same terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
+   1. If your using the GitPod environment, you can run `ex1w`
 3. In another terminal, start a second Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
+   1. If your using the GitPod environment, you can run `ex1w`
 4. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Stanislav sk"` (replace `Stanislav` with your first name)
+   1. If your using the GitPod environment, you can run `ex1st "Stanislav sk`
 5. Observe the output in the terminal windows used by each worker. 6. As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, locate the terminal with the message `[ACTIVITY INVOKED]...` and press Ctrl-C in _that_ window to kill that Worker process.
 6. Switch to the terminal window for the other Worker process. Within a few seconds, you should observe new output, indicating that it has resumed execution of the Workflow.
 7. Once you see log output indicating that translation was successful, switch back to the terminal window where you started the Workflow.

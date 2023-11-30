@@ -34,10 +34,13 @@ since the next part of this exercise will ask you to determine what it
 does by using the Web UI to interpret the Event History.
 
 1. Change to the `exercises/debug-activity/practice` directory
+   1. If you are using the GitPod environment, you can run `ex3`
 2. Run `mvn clean compile` to compile the code
 3. Start a Worker by running `mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"`
+   1. If you're using the GitPod Environment, you can run `ex3w`
 4. In another terminal window, run the above command to start another Worker.
 5. In another terminal window, run `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"` to start the Workflow
+   1. If you're using the GitPod Environment, you can run `ex3st`
 
 ## Part B: Interpret Workflow Execution by Using the Web UI
 
@@ -118,6 +121,7 @@ uses floating point numbers to represent currency.
 5. Compile your changes with `mvn clean compile`
 6. Submit this pizza order by starting the Workflow:
    `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"`
+   1. If you're using the GitPod Environment, you can run `ex3st`
 
 Although the Workflow _should_ complete within a few seconds, you will
 probably find that it never does, so open the Web UI and look at the
@@ -165,6 +169,7 @@ running `mvn clean compile && mvn test` again.
    to start the Workflow.
 2. Start both Workers by running `mvn exec:java -Dexec.mainClass="pizzaworkflow.PizzaWorker"`
    in their respective terminals.
+   1. If you're using the GitPod Environment, you can run `ex3st`
 3. Click the **History** tab near the top of the detail page in the Web UI
 4. Click the toggle button labeled **Auto refresh** near the upper-right
    portion of the screen. This will refresh the page every 15 seconds.

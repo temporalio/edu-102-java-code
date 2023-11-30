@@ -36,11 +36,10 @@ If you are executing the exercises in the provided GitPod environment, you
 can take advantage of certain aliases to aid in navigation and execution of
 the code.
 
-| Command | Action                                                                                                                        |
-| :------ | :---------------------------------------------------------------------------------------------------------------------------- |
-| `ex2`   | Change to Exercise 2 Practice Directory                                                                                       |
-| `ex2s`  | Change to Exercise 2 Solution Directory                                                                                       |
-| `ex2t`  | Execute the Exercise 2 Tests. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`) |
+| Command | Action                                  |
+| :------ | :-------------------------------------- |
+| `ex2`   | Change to Exercise 2 Practice Directory |
+| `ex2s`  | Change to Exercise 2 Solution Directory |
 
 ## Part A: Running a Test
 
