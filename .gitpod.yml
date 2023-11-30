@@ -21,14 +21,14 @@ tasks:
       echo "Translation Microservice running on this terminal"
   - name: Worker 1
     command: |
-      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
+      gp ports await 7233 && gp ports await 8080 && sleep 5 && gp preview $(gp url 8080)
       source /workspace/edu-102-java-code/.bash_aliases
       clear
       echo "Use this terminal to run your Worker"
     openMode: tab-after
   - name: Worker 2
     command: |
-      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
+      gp ports await 7233 && gp ports await 8080 && sleep 5 && gp preview $(gp url 8080)
       source /workspace/edu-102-java-code/.bash_aliases
       clear
       echo "Use this terminal to run your Worker"
