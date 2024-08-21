@@ -3,6 +3,7 @@ package pizzaworkflow;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.workflow.Workflow;
 import io.temporal.failure.ApplicationFailure;
+import io.temporal.common.RetryOptions;
 
 import pizzaworkflow.model.Address;
 import pizzaworkflow.model.Bill;
@@ -24,7 +25,9 @@ public class PizzaWorkflowImpl implements PizzaWorkflow {
   public static final Logger logger = Workflow.getLogger(PizzaWorkflowImpl.class);
 
   ActivityOptions options =
-      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5)).build();
+      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5))
+          .setRetryOptions(RetryOptions.newBuilder().setMaximumInterval(Duration.ofSeconds(10)).build())
+          .build();
 
   private final PizzaActivities activities =
       Workflow.newActivityStub(PizzaActivities.class, options);

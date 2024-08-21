@@ -174,7 +174,7 @@ running `mvn clean compile && mvn test` again.
 4. Click the toggle button labeled **Auto refresh** near the upper-right
    portion of the screen. This will refresh the page every 15 seconds.
 5. The Maximum Interval for the Retry Policy used to execute this Activity
-   is set to 100 seconds, so you should observe that the Workflow Execution
+   is set to 10 seconds, so you should observe that the Workflow Execution
    status soon changes from **Running** to **Completed**.
 
 An order processing Workflow is probably more likely to apply a discount
