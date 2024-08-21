@@ -47,6 +47,7 @@ tasks:
       source /workspace/edu-102-java-code/.bash.cfg
       clear
       echo "Use this terminal to start your second Worker in Exercise 1."
+    openMode: split-right
   - name: Terminal
     command: |
       source /workspace/edu-102-java-code/.bash.cfg
