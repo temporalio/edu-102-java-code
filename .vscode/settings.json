@@ -1,5 +1,4 @@
 {
-    "editor.minimap.enabled": false,
     "java.format.settings.url": "https://raw.githubusercontent.com/temporalio/edu-versioning-java-code/main/.vscode/custom-eclipse-java-google-style.xml",
     "java.checkstyle.configuration": "/google_checks.xml",
     "[java]": {
@@ -8,9 +7,6 @@
     "go.alternateTools": {
         "go": "/home/linuxbrew/.linuxbrew/bin/go",
     },
-    "markdown.styles": [
-        "style.css"
-    ],
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.profiles.linux": {
         "bash": {
@@ -21,7 +17,4 @@
         }
     },
     "workbench.startupEditor": "none",
-    "workbench.editorAssociations": {
-        "README.md": "vscode.markdown.preview.editor"
-    }
 }

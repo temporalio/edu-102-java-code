@@ -1,7 +1,6 @@
 package translationworkflow;
 
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -10,10 +9,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import io.temporal.activity.Activity;
 import io.temporal.failure.ApplicationFailure;
-import java.net.HttpURLConnection;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import translationworkflow.model.TranslationActivityInput;
 import translationworkflow.model.TranslationActivityOutput;
 

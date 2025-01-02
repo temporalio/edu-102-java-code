@@ -20,12 +20,17 @@ skip this step. An instance of the Microservice is already running in your
 environment**
 
 1. Navigate to the `utilities` directory at the root level of the course
-2. Change directoryies into the `microservice directory`
+2. Change directories into the `microservice directory`
    1. `cd utilities/microservice`
 3. Compile the microservice
    1. `mvn clean compile`
 4. Start the microservice
    1. `mvn exec:java -Dexec.mainClass="translationapi.Microservice"`
+
+## Prerequisite: Ensure the Temporal Service is running
+
+1. Start the Temporal Service from the command line with
+   `temporal server start-dev`
 
 ### GitPod Environment Shortcuts
 
@@ -74,7 +79,7 @@ You will now add a Timer between the two Activity calls in the Workflow Definiti
 1. After the statement where `helloMessage` is defined, but before the statement where
    `goodbyeInput` is defined, add a new statement that logs the message `Sleeping between 
 translation calls` at the info level.
-2. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(30))` to set a Timer for 30 seconds
+2. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(10))` to set a Timer for 30 seconds
 
 ## Part D: Observe Durable Execution
 
@@ -89,9 +94,10 @@ Before proceeding, make sure that there are no Workers running for this or any p
    1. If your using the GitPod environment, you can run `ex1w`
 4. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Stanislav sk"` (replace `Stanislav` with your first name)
    1. If your using the GitPod environment, you can run `ex1st "Stanislav sk`
-5. Observe the output in the terminal windows used by each worker. 6. As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, locate the terminal with the message `[ACTIVITY INVOKED]...` and press Ctrl-C in _that_ window to kill that Worker process.
-6. Switch to the terminal window for the other Worker process. Within a few seconds, you should observe new output, indicating that it has resumed execution of the Workflow.
-7. Once you see log output indicating that translation was successful, switch back to the terminal window where you started the Workflow.
+5. Observe the output in the terminal windows used by each worker.
+6. As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, locate the terminal with the message `[ACTIVITY INVOKED]...` and press Ctrl-C in _that_ window to kill that Worker process.
+7. Switch to the terminal window for the other Worker process. Within a few seconds, you should observe new output, indicating that it has resumed execution of the Workflow.
+8. Once you see log output indicating that translation was successful, switch back to the terminal window where you started the Workflow.
 
 After the final step, you should see the translated Hello and Goodbye messages, which confirms that Workflow Execution completed successfully despite the original Worker being killed.
 
