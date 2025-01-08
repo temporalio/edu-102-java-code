@@ -26,11 +26,6 @@ the code.
 | `ex3w`  | Execute the Exercise 3 Worker. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`)  |
 | `ex3st` | Execute the Exercise 3 Starter. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`) |
 
-## Prerequisite: Ensure the Temporal Service is running
-
-1. Start the Temporal Service from the command line with
-   `temporal server start-dev`
-
 ## Part A: Run the Workflow
 
 In this part of the exercise, you will start two Workers and run the

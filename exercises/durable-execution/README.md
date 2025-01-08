@@ -27,11 +27,6 @@ environment**
 4. Start the microservice
    1. `mvn exec:java -Dexec.mainClass="translationapi.Microservice"`
 
-## Prerequisite: Ensure the Temporal Service is running
-
-1. Start the Temporal Service from the command line with
-   `temporal server start-dev`
-
 ### GitPod Environment Shortcuts
 
 If you are executing the exercises in the provided GitPod environment, you
