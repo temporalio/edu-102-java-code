@@ -79,7 +79,7 @@ You will now add a Timer between the two Activity calls in the Workflow Definiti
 1. After the statement where `helloMessage` is defined, but before the statement where
    `goodbyeInput` is defined, add a new statement that logs the message `Sleeping between 
 translation calls` at the info level.
-2. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(10))` to set a Timer for 30 seconds
+2. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(10))` to set a Timer for 10 seconds
 
 ## Part D: Observe Durable Execution
 
