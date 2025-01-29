@@ -18,10 +18,6 @@ the complete version in the `solution` subdirectory.
 If you haven't already started the Translation Microservice used by this exercise,
 do so in a separate terminal.
 
-**Note: If you're using the Gitpod environment to run this exercise you can
-skip this step. An instance of the Microservice is already running in your
-environment**
-
 1. Navigate to the `utilities` directory at the root level of the course
 2. Change into the `microservice` directory
    1. `cd utilities/microservice`

@@ -13,19 +13,6 @@ Make your changes to the code in the `practice` subdirectory (look for
 the code). If you need a hint or want to verify your changes, look at
 the complete version in the `solution` subdirectory.
 
-### GitPod Environment Shortcuts
-
-If you are executing the exercises in the provided GitPod environment, you
-can take advantage of certain aliases to aid in navigation and execution of
-the code.
-
-| Command | Action                                                                                                                          |
-| :------ | :------------------------------------------------------------------------------------------------------------------------------ |
-| `ex3`   | Change to Exercise 3 Practice Directory                                                                                         |
-| `ex3s`  | Change to Exercise 3 Solution Directory                                                                                         |
-| `ex3w`  | Execute the Exercise 3 Worker. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`)  |
-| `ex3st` | Execute the Exercise 3 Starter. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`) |
-
 ## Part A: Run the Workflow
 
 In this part of the exercise, you will start two Workers and run the
