@@ -16,7 +16,7 @@ If you haven't already started the Microservice in previous exercises, do so in
 a separate terminal.
 
 1. Navigate to the `utilities` directory at the root level of the course
-2. Change directoryies into the `microservice directory`
+2. Change directories into the `microservice directory`
    1. `cd utilities/microservice`
 3. Compile the microservice
    1. `mvn clean compile`
@@ -85,9 +85,10 @@ Before proceeding, make sure that there are no Workers running for this or any p
    1. If your using the GitPod environment, you can run `ex1w`
 4. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Stanislav sk"` (replace `Stanislav` with your first name)
    1. If your using the GitPod environment, you can run `ex1st "Stanislav sk`
-5. Observe the output in the terminal windows used by each worker. 6. As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, locate the terminal with the message `[ACTIVITY INVOKED]...` and press Ctrl-C in _that_ window to kill that Worker process.
-6. Switch to the terminal window for the other Worker process. Within a few seconds, you should observe new output, indicating that it has resumed execution of the Workflow.
-7. Once you see log output indicating that translation was successful, switch back to the terminal window where you started the Workflow.
+5. Observe the output in the terminal windows used by each worker.
+6. As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, locate the terminal with the message `[ACTIVITY INVOKED]...` and press Ctrl-C in _that_ window to kill that Worker process.
+7. Switch to the terminal window for the other Worker process. Within a few seconds, you should observe new output, indicating that it has resumed execution of the Workflow.
+8. Once you see log output indicating that translation was successful, switch back to the terminal window where you started the Workflow.
 
 After the final step, you should see the translated Hello and Goodbye messages, which confirms that Workflow Execution completed successfully despite the original Worker being killed.
 

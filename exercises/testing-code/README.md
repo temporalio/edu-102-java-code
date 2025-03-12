@@ -45,9 +45,10 @@ translates the term "Hello" to German. Take a moment to study the
 test, which you'll find in the `TranslationActivitiesTest.java` file in the
 `src/test/java/translationworkflow` directory. Since the test runs the
 Activity, which in turn calls the microservice to do the translation, ensure
-that your microservice is running as state above. Then run the test.
+that your microservice is running as stated above. Then run the test.
 
-1. Run the `mvn test` command to execute the provided test
+1. `cd` into `exercises/testing-code/practice/`
+2. Run the `mvn test` command to execute the provided test
 
 ## Part B: Write and Run Another Test for the Activity
 
@@ -103,8 +104,8 @@ following steps:
 1. Edit the `TranslationWorkflowTest.java` file in the
    `src/test/java/translationworkflow` directory
 2. Add assertions for the following conditions to the `testSuccessfulTranslation` test
-   - The `helloMessage` field in the result is `Bonjour, Pierre`
-   - The `goodbyeMessage` field in the result is `Au revoir, Pierre`
+   - The `helloMessage` field in the output is `Bonjour, Pierre`
+   - The `goodbyeMessage` field in the output is `Au revoir, Pierre`
 3. Save your changes
 4. Run `mvn test`. This will fail, due to a bug in the Workflow Definition.
 5. Find and fix the bug in the Workflow Definition

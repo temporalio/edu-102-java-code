@@ -41,6 +41,7 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
     
     // TODO: Add a log statement here at the debug level stating that the Activity is going
     // to be invoked. Be sure to include the word being translated and the language code.
+    
     TranslationActivityInput goodbyeInput = new TranslationActivityInput("goodbye", languageCode);
     TranslationActivityOutput goodbyeResult = activities.translateTerm(goodbyeInput);
     String goodbyeMessage = goodbyeResult.getTranslation() + ", " + name;
