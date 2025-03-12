@@ -154,8 +154,7 @@ when(mockedActivities.translateTerm(new TranslationActivityInput("hello", "fr"))
    with the `fr` language code specified.
 8. Modify the Worker registration line to use the new `mockedActivities` instance.
 9. Save your changes
-10. Add the following code at the bottom of the `TranslateActivityInput` class,
-    and add this import at the top of the file: `import java.util.Objects;`.
+10. Add the following code at the bottom of the `TranslateActivityInput` class.
     - Why is this necessary? If you ran the test now as written, it would fail.
       This is because comparisons of the `TranslateActivityInput` objects (as
       with all objects in Java) invoke its `equals` method. Because this class
