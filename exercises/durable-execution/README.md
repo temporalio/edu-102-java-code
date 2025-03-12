@@ -15,10 +15,6 @@ Make your changes to the code in the `practice` subdirectory (look for `TODO` co
 If you haven't already started the Microservice in previous exercises, do so in
 a separate terminal.
 
-**Note: If you're using the Gitpod environment to run this exercise you can
-skip this step. An instance of the Microservice is already running in your
-environment**
-
 1. Navigate to the `utilities` directory at the root level of the course
 2. Change directoryies into the `microservice directory`
    1. `cd utilities/microservice`
