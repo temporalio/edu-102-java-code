@@ -127,7 +127,7 @@ public class Microservice {
     Map<String, String> slovakTranslations = new HashMap<>();
     slovakTranslations.put("hello", "ahoj");
     slovakTranslations.put("goodbye", "zbohom");
-    slovakTranslations.put("thanks", "ďakujem koe");
+    slovakTranslations.put("thanks", "ďakujem);
     translations.put("sk", slovakTranslations);
 
     // Turkish translations
