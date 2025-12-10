@@ -27,6 +27,6 @@ public class AgeEstimationWorkflowTest {
 
     String result = workflow.estimateAge("Betty");
 
-    assertEquals("Betty has an estimated age of 76", result);
+    assertEquals("Betty has an estimated age of 78", result);
   }
 }

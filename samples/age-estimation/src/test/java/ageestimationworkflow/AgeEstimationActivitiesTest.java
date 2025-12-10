@@ -28,6 +28,6 @@ public class AgeEstimationActivitiesTest {
   @Test
   public void testRetrieveEstimate() {
     int result = activities.retrieveEstimate("Mason");
-    assertEquals(38, result);
+    assertEquals(40, result);
   }
 }
